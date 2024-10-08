@@ -16,21 +16,21 @@
 
         <!-- Línea vertical roja -->
         <LinearLayout
-            android:layout_width="137dp"
+            android:layout_width="60dp"
             android:layout_height="match_parent"
-            android:background="#3aff00" />
+            android:background="#00c600" />
 
         <!-- Línea vertical verde -->
         <LinearLayout
-            android:layout_width="137dp"
+            android:layout_width="292dp"
             android:layout_height="100dp"
             android:background="#ffffff" />
 
         <!-- Línea vertical azul -->
         <LinearLayout
-            android:layout_width="137dp"
+            android:layout_width="60dp"
             android:layout_height="match_parent"
-            android:background="#3aff00" />
+            android:background="#00c600" />
     </LinearLayout>
 
 </LinearLayout>
