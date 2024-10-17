@@ -3,6 +3,8 @@ package com.example.botonestexto;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
