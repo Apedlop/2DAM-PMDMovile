@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">BotonesTexto</string>
+    <string name="bt1">Botón 1</string>
+    <string name="bt2">Botón 2</string>
+    <string name="bt3">Botón 3</string>
+    <string name="bt4">Botón 4</string>
+    <string name="bt5">Botón 5</string>
+</resources>

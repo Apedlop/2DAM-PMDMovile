@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Ejemplos Animaciones</string>
+    <string name="bt1">Rotar 1</string>
+    <string name="bt2">Rotar 2</string>
+    <string name="bt3">Rotar 3</string>
+    <string name="bt4">Alfa 1</string>
+    <string name="bt5">Alfa 2</string>
+    <string name="bt6">Escala 1</string>
+    <string name="bt7">Escala 2</string>
+    <string name="bt8">Mueve 1</string>
+    <string name="bt9">Mueve 2</string>
+    <string name="bt10">Varios 1</string>
+    <string name="bt11">Varios 2</string>
+</resources>
