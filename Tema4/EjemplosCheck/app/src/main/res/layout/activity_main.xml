@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/boton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Spinner 1"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/boton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Spinner 2"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/boton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CheckBox"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/boton4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RadioButton"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/boton5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seleccionar Día"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/boton6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Switch"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/boton7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SeekBar"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/boton8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SeekBar Fraccionado"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/boton9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RatingBar"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/boton10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ProgressBar"
+        tools:ignore="MissingConstraints" />
+
+</TableLayout>
