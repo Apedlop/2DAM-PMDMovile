@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.helper.widget.Carousel
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:ignore="ExtraText">
 
-    <View
-        android:id="@+id/my_square"
+    <ImageView
+        android:id="@+id/image1"
         android:layout_width="276dp"
-        android:layout_height="276dp"
-        android:layout_centerInParent="true"
-        android:background="#FF0000"  />
+        android:layout_height="350dp"
+        android:src="@drawable/yoyo"/>
 
-<!--    <ImageView-->
-<!--        android:id="@+id/my_image"-->
-<!--        android:layout_width="276dp"-->
-<!--        android:layout_height="350dp"-->
-<!--        android:layout_centerInParent="true"-->
-<!--        android:src="@drawable/yoyo" />-->
-
-</RelativeLayout>
+</androidx.constraintlayout.helper.widget.Carousel>

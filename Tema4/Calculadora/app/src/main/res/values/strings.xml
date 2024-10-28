@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Calculadora</string>
+    <string name="visor">VISOR</string>
+    <string name="fontFamily">colour.ttf</string>
 </resources>
