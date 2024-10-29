@@ -16,100 +16,52 @@
         <TextView
             style="@style/titulo"
             android:text="@string/wordle" />
-
     </LinearLayout>
 
-    <LinearLayout
+    <GridLayout
+        android:id="@+id/palabras_grid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:orientation="vertical"> <!-- Cambiar a orientación vertical para filas -->
+        android:rowCount="5"
+        android:columnCount="5"
+        android:layout_gravity="center">
 
         <!-- Fila 1 -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"> <!-- Horizontal para la fila -->
-
-            <TextView style="@style/cuadrosTexto" />
-
-            <TextView style="@style/cuadrosTexto" />
-
-            <TextView style="@style/cuadrosTexto" />
-
-            <TextView style="@style/cuadrosTexto" />
-
-            <TextView style="@style/cuadrosTexto" />
-        </LinearLayout>
+        <TextView style="@style/cuadrosTexto" />
+        <TextView style="@style/cuadrosTexto" />
+        <TextView style="@style/cuadrosTexto" />
+        <TextView style="@style/cuadrosTexto" />
+        <TextView style="@style/cuadrosTexto" />
 
         <!-- Fila 2 -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView style="@style/cuadrosTexto" />
-
-            <TextView style="@style/cuadrosTexto" />
-
-            <TextView style="@style/cuadrosTexto" />
-
-            <TextView style="@style/cuadrosTexto" />
-
-            <TextView style="@style/cuadrosTexto" />
-        </LinearLayout>
+        <TextView style="@style/cuadrosTexto" />
+        <TextView style="@style/cuadrosTexto" />
+        <TextView style="@style/cuadrosTexto" />
+        <TextView style="@style/cuadrosTexto" />
+        <TextView style="@style/cuadrosTexto" />
 
         <!-- Fila 3 -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView style="@style/cuadrosTexto" />
-
-            <TextView style="@style/cuadrosTexto" />
-
-            <TextView style="@style/cuadrosTexto" />
-
-            <TextView style="@style/cuadrosTexto" />
-
-            <TextView style="@style/cuadrosTexto" />
-        </LinearLayout>
+        <TextView style="@style/cuadrosTexto" />
+        <TextView style="@style/cuadrosTexto" />
+        <TextView style="@style/cuadrosTexto" />
+        <TextView style="@style/cuadrosTexto" />
+        <TextView style="@style/cuadrosTexto" />
 
         <!-- Fila 4 -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView style="@style/cuadrosTexto" />
-
-            <TextView style="@style/cuadrosTexto" />
-
-            <TextView style="@style/cuadrosTexto" />
-
-            <TextView style="@style/cuadrosTexto" />
-
-            <TextView style="@style/cuadrosTexto" />
-        </LinearLayout>
+        <TextView style="@style/cuadrosTexto" />
+        <TextView style="@style/cuadrosTexto" />
+        <TextView style="@style/cuadrosTexto" />
+        <TextView style="@style/cuadrosTexto" />
+        <TextView style="@style/cuadrosTexto" />
 
         <!-- Fila 5 -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView style="@style/cuadrosTexto" />
-
-            <TextView style="@style/cuadrosTexto" />
-
-            <TextView style="@style/cuadrosTexto" />
-
-            <TextView style="@style/cuadrosTexto" />
-
-            <TextView style="@style/cuadrosTexto" />
-        </LinearLayout>
-    </LinearLayout>
+        <TextView style="@style/cuadrosTexto" />
+        <TextView style="@style/cuadrosTexto" />
+        <TextView style="@style/cuadrosTexto" />
+        <TextView style="@style/cuadrosTexto" />
+        <TextView style="@style/cuadrosTexto" />
+    </GridLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -243,7 +195,7 @@
             <Button
                 android:id="@+id/Intro"
                 style="@style/botonesLetras"
-                android:layout_width="80dp"
+                android:layout_width="50dp"
                 android:text="Enter" />
 
             <Button
@@ -284,7 +236,7 @@
             <Button
                 android:id="@+id/botonBorrar"
                 style="@style/botonesLetras"
-                android:layout_width="80dp"
+                android:layout_width="50dp"
                 android:text="Del" />
         </LinearLayout>
     </LinearLayout>
