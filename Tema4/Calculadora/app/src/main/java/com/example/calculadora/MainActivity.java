@@ -67,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
         cons.delete(0,display.getText().length());
         cons.insert(0,0);
         display.setText(cons);
-        operator="";
     }
 
     public void setupButton(int id, String valor) {
