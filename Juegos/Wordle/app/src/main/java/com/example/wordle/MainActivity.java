@@ -1,10 +1,11 @@
 package com.example.wordle;
 
+import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.GridLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,114 +15,138 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String[] palabras = {"Mundo", "Claro", "Cielo", "Nunca", "Silla", "Campo", "Verde", "Rapido", "Fuego", "Lugar", "Sombra", "Arbol", "Playa", "Flores", "Finca", "Oveja", "Perro", "Poema", "Nieve", "Sueño"};
-    private TextView palabraText;
-    private String palabraAleatoria;
-    private int intentos = 0;
-    private TextView[][] cuadrosTexto;
+    String[] palabras = {"MUNDO", "CIELO", "SILLA", "PERRO", "RUGIR", "MARZO", "CERCA", "JUGAR", "FUEGO", "LUZCA", "PLAYA", "FLORA", "VOLAR", "VALOR", "TIGRE", "SABOR", "NIEVE", "VERDE", "MUJER", "PAZOS"};
+    int[] idButton = new int[27];
+    int[] idTextView = new int[30];
+    TextView palabraText, cuadroTexto;
+    Button button;
+    String palabraAleatoria;
+    StringBuilder palabraIntroducida;
+    int indice = 0, intentos = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        palabraText = findViewById(R.id.palabra_texto); // Correcto ID para mostrar la palabra introducida
-        palabraAleatoria = obtenerPalabraAleatoria();
-        cuadrosTexto = new TextView[6][5]; // 6 intentos, 5 letras
-        inicializarCuadrosTexto();
+        palabraAleatoria = getPalabraAleatoria();
+        palabraIntroducida = new StringBuilder();
 
-        int[] idButton = {
+        idButton = new int[]{
                 R.id.Q, R.id.W, R.id.E, R.id.R, R.id.T, R.id.Y, R.id.U, R.id.I, R.id.O, R.id.P,
                 R.id.A, R.id.S, R.id.D, R.id.F, R.id.G, R.id.H, R.id.J, R.id.K, R.id.L, R.id.Ñ,
                 R.id.Z, R.id.X, R.id.C, R.id.V, R.id.B, R.id.N, R.id.M
         };
 
+        idTextView = new int[]{
+                R.id.fila1_1, R.id.fila1_2, R.id.fila1_3, R.id.fila1_4, R.id.fila1_5,
+                R.id.fila2_1, R.id.fila2_2, R.id.fila2_3, R.id.fila2_4, R.id.fila2_5,
+                R.id.fila3_1, R.id.fila3_2, R.id.fila3_3, R.id.fila3_4, R.id.fila3_5,
+                R.id.fila4_1, R.id.fila4_2, R.id.fila4_3, R.id.fila4_4, R.id.fila4_5,
+                R.id.fila5_1, R.id.fila5_2, R.id.fila5_3, R.id.fila5_4, R.id.fila5_5,
+                R.id.fila6_1, R.id.fila6_2, R.id.fila6_3, R.id.fila6_4, R.id.fila6_5,
+        };
+    }
+
+    public void onClick(View v) {
+        if (v.getId() == R.id.botonBorrar) {
+            borrar();
+        } else if (v.getId() == R.id.Intro) {
+            enter();
+        } else {
+            botonLetras(v);
+        }
+    }
+
+    public void botonLetras(View v) {
         for (int buttonId : idButton) {
-            Button letras = findViewById(buttonId);
-            if (letras != null) {
-                letras.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        String currentText = palabraText.getText().toString();
-                        if (currentText.length() < 5) {
-                            palabraText.setText(currentText + letras.getText().toString());
-                        }
-                    }
-                });
+            if (v.getId() == buttonId) {
+                if (indice < 5) {
+                    Button letraBoton = (Button) v;
+                    String letra = letraBoton.getText().toString();
+                    palabraText = findViewById(idTextView[(intentos * 5) + indice]);
+                    palabraText.setText(letra);
+                    indice++;
+                }
+                break;
             }
         }
+    }
 
-        Button enter = findViewById(R.id.Intro);
-        enter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                enter();
-            }
-        });
+    public void borrar() {
+        if (indice > 0) {
+            indice--;
+            palabraText = findViewById(idTextView[(intentos * 5) + indice]);
+            palabraText.setText("");
+        }
     }
 
     public void enter() {
-        String palabraActual = palabraText.getText().toString();
+        if (indice == 5) {
+            palabraIntroducida.setLength(0);
+            for (int i = 0; i < 5; i++) {
+                cuadroTexto = findViewById(idTextView[intentos * 5 + i]);
+                String letra = cuadroTexto.getText().toString();
+                palabraIntroducida.append(letra);
+            }
 
-        if (palabraActual.length() == 5) {
-            if (isCorrecta(palabraActual, palabraAleatoria)) {
-                Toast.makeText(this, "¡Correcto!", Toast.LENGTH_SHORT).show();
-                mostrarResultados(palabraActual);
-                palabraAleatoria = obtenerPalabraAleatoria();
-                intentos = 0;
-                palabraText.setText("");
-            } else {
-                mostrarResultados(palabraActual);
+            comprobarLetras();
+
+            if (palabraIntroducida.toString().equalsIgnoreCase(palabraAleatoria)) {
+                Toast.makeText(this, "¡Felicidades! Adivinaste la palabra.", Toast.LENGTH_LONG).show();
+            } else if (intentos < 5) {
                 intentos++;
-                if (intentos >= 6) {
-                    Toast.makeText(this, "¡Perdiste! La palabra era " + palabraAleatoria, Toast.LENGTH_LONG).show();
-                    palabraAleatoria = obtenerPalabraAleatoria();
-                    intentos = 0;
-                    palabraText.setText("");
-                }
+                indice = 0;
+            } else {
+                Toast.makeText(this, "Fin del juego. La palabra era: " + palabraAleatoria, Toast.LENGTH_LONG).show();
             }
         } else {
-            Toast.makeText(this, "La palabra debe tener 5 letras.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "La palabra debe tener 5 letras", Toast.LENGTH_LONG).show();
         }
     }
 
-    private void mostrarResultados(String palabraActual) {
-        for (int i = 0; i < palabraActual.length(); i++) {
-            cuadrosTexto[intentos][i].setText(String.valueOf(palabraActual.charAt(i)));
-            if (palabraActual.charAt(i) == palabraAleatoria.charAt(i)) {
-                cuadrosTexto[intentos][i].setBackgroundColor(Color.GREEN);
-            } else if (palabraAleatoria.contains(String.valueOf(palabraActual.charAt(i)))) {
-                cuadrosTexto[intentos][i].setBackgroundColor(Color.YELLOW);
+    public void comprobarLetras() {
+        for (int i = 0; i < 5; i++) {
+            cuadroTexto = findViewById(idTextView[intentos * 5 + i]);
+            button = findViewById(idButton[intentos * 5 + indice]);
+            char letraIngresada = palabraIntroducida.charAt(i);
+
+            if (letraIngresada == palabraAleatoria.charAt(i)) {
+                cambiarColor(cuadroTexto, Color.GREEN);
+                cambiarColorBotones(button, Color.GREEN);
+            } else if (palabraAleatoria.contains(String.valueOf(letraIngresada))) {
+                cambiarColor(cuadroTexto, Color.YELLOW);
+                cambiarColorBotones(button, Color.YELLOW);
             } else {
-                cuadrosTexto[intentos][i].setBackgroundColor(Color.GRAY);
+                cambiarColor(cuadroTexto, Color.GRAY);
+                cambiarColorBotones(button, Color.GRAY);
             }
         }
     }
 
-    private void inicializarCuadrosTexto() {
-        GridLayout gridLayout = findViewById(R.id.palabras_grid); // ID corregido
-        for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 5; j++) {
-                TextView cuadroTexto = new TextView(this);
-                cuadroTexto.setLayoutParams(new GridLayout.LayoutParams());
-                cuadroTexto.setTextSize(24);
-                cuadroTexto.setTextColor(Color.BLACK);
-                cuadroTexto.setBackgroundColor(Color.WHITE);
-                cuadroTexto.setWidth(100);
-                cuadroTexto.setHeight(100);
-                cuadrosTexto[i][j] = cuadroTexto;
-                gridLayout.addView(cuadroTexto);
-            }
-        }
+    private int getButtonIndex(char letra) {
+        String letras = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+        return letras.indexOf(letra); // Usar indexOf para obtener el índice
     }
 
-    public String obtenerPalabraAleatoria() {
+    public String getPalabraAleatoria() {
         Random random = new Random();
-        int i = random.nextInt(palabras.length);
-        return palabras[i];
+        int indiceAleatorio = random.nextInt(palabras.length);
+        return palabras[indiceAleatorio];
     }
 
-    public boolean isCorrecta(String palabra, String correcta) {
-        return palabra.equalsIgnoreCase(correcta);
+    public void cambiarColor(TextView textView, int color) {
+        if (textView.getBackground() instanceof GradientDrawable) {
+            GradientDrawable background = (GradientDrawable) textView.getBackground();
+            background.setColor(color);
+        }
+    }
+
+    public void cambiarColorBotones(Button button, int color) {
+        if (button.getBackground() instanceof GradientDrawable) {
+            GradientDrawable background = (GradientDrawable) button.getBackground();
+            background.setColor(color);
+        }
+        button.setBackgroundTintList(ColorStateList.valueOf(color));
     }
 }

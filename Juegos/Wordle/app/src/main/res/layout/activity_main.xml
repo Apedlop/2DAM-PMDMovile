@@ -22,53 +22,144 @@
         android:id="@+id/palabras_grid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:rowCount="5"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
         android:columnCount="5"
-        android:layout_gravity="center">
+        android:rowCount="6">
 
         <!-- Fila 1 -->
-        <TextView style="@style/cuadrosTexto" />
-        <TextView style="@style/cuadrosTexto" />
-        <TextView style="@style/cuadrosTexto" />
-        <TextView style="@style/cuadrosTexto" />
-        <TextView style="@style/cuadrosTexto" />
+        <TextView
+            android:id="@+id/fila1_1"
+            style="@style/cuadrosTexto" />
+
+        <TextView
+            android:id="@+id/fila1_2"
+            style="@style/cuadrosTexto" />
+
+        <TextView
+            android:id="@+id/fila1_3"
+            style="@style/cuadrosTexto" />
+
+        <TextView
+            android:id="@+id/fila1_4"
+            style="@style/cuadrosTexto" />
+
+        <TextView
+            android:id="@+id/fila1_5"
+            style="@style/cuadrosTexto" />
 
         <!-- Fila 2 -->
-        <TextView style="@style/cuadrosTexto" />
-        <TextView style="@style/cuadrosTexto" />
-        <TextView style="@style/cuadrosTexto" />
-        <TextView style="@style/cuadrosTexto" />
-        <TextView style="@style/cuadrosTexto" />
+        <TextView
+            android:id="@+id/fila2_1"
+            style="@style/cuadrosTexto" />
+
+        <TextView
+            android:id="@+id/fila2_2"
+            style="@style/cuadrosTexto" />
+
+        <TextView
+            android:id="@+id/fila2_3"
+            style="@style/cuadrosTexto" />
+
+        <TextView
+            android:id="@+id/fila2_4"
+            style="@style/cuadrosTexto" />
+
+        <TextView
+            android:id="@+id/fila2_5"
+            style="@style/cuadrosTexto" />
 
         <!-- Fila 3 -->
-        <TextView style="@style/cuadrosTexto" />
-        <TextView style="@style/cuadrosTexto" />
-        <TextView style="@style/cuadrosTexto" />
-        <TextView style="@style/cuadrosTexto" />
-        <TextView style="@style/cuadrosTexto" />
+        <TextView
+            android:id="@+id/fila3_1"
+            style="@style/cuadrosTexto" />
+
+        <TextView
+            android:id="@+id/fila3_2"
+            style="@style/cuadrosTexto" />
+
+        <TextView
+            android:id="@+id/fila3_3"
+            style="@style/cuadrosTexto" />
+
+        <TextView
+            android:id="@+id/fila3_4"
+            style="@style/cuadrosTexto" />
+
+        <TextView
+            android:id="@+id/fila3_5"
+            style="@style/cuadrosTexto" />
 
         <!-- Fila 4 -->
-        <TextView style="@style/cuadrosTexto" />
-        <TextView style="@style/cuadrosTexto" />
-        <TextView style="@style/cuadrosTexto" />
-        <TextView style="@style/cuadrosTexto" />
-        <TextView style="@style/cuadrosTexto" />
+        <TextView
+            android:id="@+id/fila4_1"
+            style="@style/cuadrosTexto" />
+
+        <TextView
+            android:id="@+id/fila4_2"
+            style="@style/cuadrosTexto" />
+
+        <TextView
+            android:id="@+id/fila4_3"
+            style="@style/cuadrosTexto" />
+
+        <TextView
+            android:id="@+id/fila4_4"
+            style="@style/cuadrosTexto" />
+
+        <TextView
+            android:id="@+id/fila4_5"
+            style="@style/cuadrosTexto" />
 
         <!-- Fila 5 -->
-        <TextView style="@style/cuadrosTexto" />
-        <TextView style="@style/cuadrosTexto" />
-        <TextView style="@style/cuadrosTexto" />
-        <TextView style="@style/cuadrosTexto" />
-        <TextView style="@style/cuadrosTexto" />
+        <TextView
+            android:id="@+id/fila5_1"
+            style="@style/cuadrosTexto" />
+
+        <TextView
+            android:id="@+id/fila5_2"
+            style="@style/cuadrosTexto" />
+
+        <TextView
+            android:id="@+id/fila5_3"
+            style="@style/cuadrosTexto" />
+
+        <TextView
+            android:id="@+id/fila5_4"
+            style="@style/cuadrosTexto" />
+
+        <TextView
+            android:id="@+id/fila5_5"
+            style="@style/cuadrosTexto" />
+
+        <!-- Fila 6 -->
+        <TextView
+            android:id="@+id/fila6_1"
+            style="@style/cuadrosTexto" />
+
+        <TextView
+            android:id="@+id/fila6_2"
+            style="@style/cuadrosTexto" />
+
+        <TextView
+            android:id="@+id/fila6_3"
+            style="@style/cuadrosTexto" />
+
+        <TextView
+            android:id="@+id/fila6_4"
+            style="@style/cuadrosTexto" />
+
+        <TextView
+            android:id="@+id/fila6_5"
+            style="@style/cuadrosTexto" />
     </GridLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="vertical">
         <!-- Fila 1 del teclado: QWERTYUIOP -->
         <LinearLayout
             android:id="@+id/tecladoFila1"
@@ -79,51 +170,61 @@
             <Button
                 android:id="@+id/Q"
                 style="@style/botonesLetras"
+                android:onClick="onClick"
                 android:text="Q" />
 
             <Button
                 android:id="@+id/W"
                 style="@style/botonesLetras"
+                android:onClick="onClick"
                 android:text="W" />
 
             <Button
                 android:id="@+id/E"
                 style="@style/botonesLetras"
+                android:onClick="onClick"
                 android:text="E" />
 
             <Button
                 android:id="@+id/R"
                 style="@style/botonesLetras"
+                android:onClick="onClick"
                 android:text="R" />
 
             <Button
                 android:id="@+id/T"
                 style="@style/botonesLetras"
+                android:onClick="onClick"
                 android:text="T" />
 
             <Button
                 android:id="@+id/Y"
                 style="@style/botonesLetras"
+                android:onClick="onClick"
                 android:text="Y" />
 
             <Button
                 android:id="@+id/U"
                 style="@style/botonesLetras"
+                android:onClick="onClick"
                 android:text="U" />
 
             <Button
                 android:id="@+id/I"
                 style="@style/botonesLetras"
+                android:onClick="onClick"
                 android:text="I" />
 
             <Button
                 android:id="@+id/O"
                 style="@style/botonesLetras"
+                android:onClick="onClick"
                 android:text="O" />
 
             <Button
                 android:id="@+id/P"
                 style="@style/botonesLetras"
+                android:onClick="onClick"
                 android:text="P" />
         </LinearLayout>
 
@@ -137,51 +238,61 @@
             <Button
                 android:id="@+id/A"
                 style="@style/botonesLetras"
+                android:onClick="onClick"
                 android:text="A" />
 
             <Button
                 android:id="@+id/S"
                 style="@style/botonesLetras"
+                android:onClick="onClick"
                 android:text="S" />
 
             <Button
                 android:id="@+id/D"
                 style="@style/botonesLetras"
+                android:onClick="onClick"
                 android:text="D" />
 
             <Button
                 android:id="@+id/F"
                 style="@style/botonesLetras"
+                android:onClick="onClick"
                 android:text="F" />
 
             <Button
                 android:id="@+id/G"
                 style="@style/botonesLetras"
+                android:onClick="onClick"
                 android:text="G" />
 
             <Button
                 android:id="@+id/H"
                 style="@style/botonesLetras"
+                android:onClick="onClick"
                 android:text="H" />
 
             <Button
                 android:id="@+id/J"
                 style="@style/botonesLetras"
+                android:onClick="onClick"
                 android:text="J" />
 
             <Button
                 android:id="@+id/K"
                 style="@style/botonesLetras"
+                android:onClick="onClick"
                 android:text="K" />
 
             <Button
                 android:id="@+id/L"
                 style="@style/botonesLetras"
+                android:onClick="onClick"
                 android:text="L" />
 
             <Button
                 android:id="@+id/Ñ"
                 style="@style/botonesLetras"
+                android:onClick="onClick"
                 android:text="Ñ" />
         </LinearLayout>
 
@@ -196,47 +307,56 @@
                 android:id="@+id/Intro"
                 style="@style/botonesLetras"
                 android:layout_width="50dp"
+                android:onClick="onClick"
                 android:text="Enter" />
 
             <Button
                 android:id="@+id/Z"
                 style="@style/botonesLetras"
+                android:onClick="onClick"
                 android:text="Z" />
 
             <Button
                 android:id="@+id/X"
                 style="@style/botonesLetras"
+                android:onClick="onClick"
                 android:text="X" />
 
             <Button
                 android:id="@+id/C"
                 style="@style/botonesLetras"
+                android:onClick="onClick"
                 android:text="C" />
 
             <Button
                 android:id="@+id/V"
                 style="@style/botonesLetras"
+                android:onClick="onClick"
                 android:text="V" />
 
             <Button
                 android:id="@+id/B"
                 style="@style/botonesLetras"
+                android:onClick="onClick"
                 android:text="B" />
 
             <Button
                 android:id="@+id/N"
                 style="@style/botonesLetras"
+                android:onClick="onClick"
                 android:text="N" />
 
             <Button
                 android:id="@+id/M"
                 style="@style/botonesLetras"
+                android:onClick="onClick"
                 android:text="M" />
 
             <Button
                 android:id="@+id/botonBorrar"
                 style="@style/botonesLetras"
                 android:layout_width="50dp"
+                android:onClick="onClick"
                 android:text="Del" />
         </LinearLayout>
     </LinearLayout>
