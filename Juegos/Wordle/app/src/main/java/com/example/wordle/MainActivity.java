@@ -13,13 +13,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     String[] palabras = {"MUNDO", "CIELO", "SILLA", "PERRO", "RUGIR", "MARZO", "CERCA", "JUGAR", "FUEGO", "LUZCA", "PLAYA", "FLORA", "VOLAR", "VALOR", "TIGRE", "SABOR", "NIEVE", "VERDE", "MUJER", "PAZOS"};
     int[] idButton = new int[27];
     int[] idTextView = new int[30];
     TextView palabraText, cuadroTexto;
-    Button button;
+    Button[] button = new Button[27];
+    Button[] botonesPresionados = new Button[5];  // Guardar los botones presionados para esta palabra
     String palabraAleatoria;
     StringBuilder palabraIntroducida;
     int indice = 0, intentos = 0;
@@ -38,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
                 R.id.Z, R.id.X, R.id.C, R.id.V, R.id.B, R.id.N, R.id.M
         };
 
+        for (int i = 0; i < idButton.length; i++) {
+            button[i] = findViewById(idButton[i]);
+            button[i].setOnClickListener(this);
+        }
+
         idTextView = new int[]{
                 R.id.fila1_1, R.id.fila1_2, R.id.fila1_3, R.id.fila1_4, R.id.fila1_5,
                 R.id.fila2_1, R.id.fila2_2, R.id.fila2_3, R.id.fila2_4, R.id.fila2_5,
@@ -48,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         };
     }
 
+    @Override
     public void onClick(View v) {
         if (v.getId() == R.id.botonBorrar) {
             borrar();
@@ -66,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
                     String letra = letraBoton.getText().toString();
                     palabraText = findViewById(idTextView[(intentos * 5) + indice]);
                     palabraText.setText(letra);
+                    botonesPresionados[indice] = letraBoton; // Guardar el botón presionado
                     indice++;
                 }
                 break;
@@ -108,25 +116,28 @@ public class MainActivity extends AppCompatActivity {
     public void comprobarLetras() {
         for (int i = 0; i < 5; i++) {
             cuadroTexto = findViewById(idTextView[intentos * 5 + i]);
-            button = findViewById(idButton[intentos * 5 + indice]);
             char letraIngresada = palabraIntroducida.charAt(i);
+            Button botonActual = botonesPresionados[i]; // Obtener el botón presionado correspondiente
 
             if (letraIngresada == palabraAleatoria.charAt(i)) {
                 cambiarColor(cuadroTexto, Color.GREEN);
-                cambiarColorBotones(button, Color.GREEN);
+                cambiarColorBoton(botonActual, Color.GREEN);
             } else if (palabraAleatoria.contains(String.valueOf(letraIngresada))) {
                 cambiarColor(cuadroTexto, Color.YELLOW);
-                cambiarColorBotones(button, Color.YELLOW);
+                cambiarColorBoton(botonActual, Color.YELLOW);
             } else {
                 cambiarColor(cuadroTexto, Color.GRAY);
-                cambiarColorBotones(button, Color.GRAY);
+                cambiarColorBoton(botonActual, Color.GRAY);
             }
         }
     }
 
-    private int getButtonIndex(char letra) {
-        String letras = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
-        return letras.indexOf(letra); // Usar indexOf para obtener el índice
+    public void cambiarColorBoton(Button boton, int color) {
+        if (boton.getBackground() instanceof GradientDrawable) {
+            GradientDrawable background = (GradientDrawable) boton.getBackground();
+            background.setColor(color);
+        }
+        boton.setBackgroundTintList(ColorStateList.valueOf(color));
     }
 
     public String getPalabraAleatoria() {
@@ -140,13 +151,5 @@ public class MainActivity extends AppCompatActivity {
             GradientDrawable background = (GradientDrawable) textView.getBackground();
             background.setColor(color);
         }
-    }
-
-    public void cambiarColorBotones(Button button, int color) {
-        if (button.getBackground() instanceof GradientDrawable) {
-            GradientDrawable background = (GradientDrawable) button.getBackground();
-            background.setColor(color);
-        }
-        button.setBackgroundTintList(ColorStateList.valueOf(color));
     }
 }

@@ -25,7 +25,7 @@
             android:name=".rotar.Rotar2"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".rotar.Rotar1"
             android:exported="false" />
         <activity
             android:name=".mueve.Mueve2"
@@ -46,11 +46,10 @@
             android:name=".alfa.Alfa1"
             android:exported="false" />
         <activity
-            android:name=".rotar.Rotar1"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
