@@ -1,0 +1,136 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/textViewResultado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="0"
+        android:textSize="32sp" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="4"
+        android:padding="8dp"
+        android:rowCount="6">
+
+        <!-- Fila superior: Botón Clear y Potencia -->
+        <Button
+            android:id="@+id/botonBorrar"
+            style="@style/BotonOperador"
+            android:text="C" />
+
+        <Button
+            android:id="@+id/botonPotencia"
+            style="@style/BotonOperador"
+            android:text="^" />
+
+        <Button
+            android:id="@+id/botonDividir"
+            style="@style/BotonOperador"
+            android:text="/" />
+
+        <Button
+            android:id="@+id/botonMultiplicar"
+            style="@style/BotonOperador"
+            android:text="*" />
+
+        <!-- Fila de números -->
+        <Button
+            android:id="@+id/boton7"
+            style="@style/BotonCalculadora"
+            android:text="7" />
+
+        <Button
+            android:id="@+id/boton8"
+            style="@style/BotonCalculadora"
+            android:text="8" />
+
+        <Button
+            android:id="@+id/boton9"
+            style="@style/BotonCalculadora"
+            android:text="9" />
+
+        <Button
+            android:id="@+id/botonRestar"
+            style="@style/BotonOperador"
+            android:text="-" />
+
+        <Button
+            android:id="@+id/boton4"
+            style="@style/BotonCalculadora"
+            android:text="4" />
+
+        <Button
+            android:id="@+id/boton5"
+            style="@style/BotonCalculadora"
+            android:text="5" />
+
+        <Button
+            android:id="@+id/boton6"
+            style="@style/BotonCalculadora"
+            android:text="6" />
+
+        <Button
+            android:id="@+id/botonSumar"
+            style="@style/BotonOperador"
+            android:text="+" />
+
+        <Button
+            android:id="@+id/boton1"
+            style="@style/BotonCalculadora"
+            android:text="1" />
+
+        <Button
+            android:id="@+id/boton2"
+            style="@style/BotonCalculadora"
+            android:text="2" />
+
+        <Button
+            android:id="@+id/boton3"
+            style="@style/BotonCalculadora"
+            android:text="3" />
+
+        <Button
+            android:id="@+id/botonIgual"
+            style="@style/BotonOperador"
+            android:text="=" />
+
+        <Button
+            android:id="@+id/boton0"
+            style="@style/BotonCalculadora"
+            android:text="0" />
+
+        <Button
+            android:id="@+id/botonPunto"
+            style="@style/BotonCalculadora"
+            android:text="." />
+
+    </GridLayout>
+
+    <!-- Historial de operaciones -->
+    <TextView
+        android:id="@+id/textViewHistorial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="Historial"
+        android:textSize="18sp" />
+
+    <!-- Lista para mostrar las operaciones -->
+    <ListView
+        android:id="@+id/listViewHistorial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="1dp"
+        android:padding="8dp" />
+
+</LinearLayout>

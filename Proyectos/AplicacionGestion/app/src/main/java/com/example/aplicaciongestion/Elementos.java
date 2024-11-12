@@ -2,18 +2,29 @@ package com.example.aplicaciongestion;
 
 public class Elementos {
 
-    String titulo, contenido;
+    String nombre, raza;
+    int imagen, edad;
 
-    public Elementos(String titulo, String contenido) {
-        this.titulo = titulo;
-        this.contenido = contenido;
+    public Elementos(int imagen, String nombre, int edad, String raza) {
+        this.imagen = imagen;
+        this.nombre = nombre;
+        this.edad = edad;
+        this.raza = raza;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public int getImagen() {
+        return imagen;
     }
 
-    public String getContenido() {
-        return contenido;
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getRaza() {
+        return raza;
+    }
+
+    public int getEdad() {
+        return edad;
     }
 }
