@@ -4,35 +4,49 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class Adaptador extends ArrayAdapter<Elementos> {
+public abstract class Adaptador extends BaseAdapter {
 
-    private List<Elementos> elementos;
+    private ArrayList<Mascota> listaMascotas;
+    private int layoutId;
+    private Context contexto;
 
-    public Adaptador(Context contexto, List<Elementos> elementos) {
-        super(contexto, R.layout.elementos, elementos);
-        this.elementos = elementos;
+    public Adaptador(ArrayList<Mascota> listaMascotas, int layoutId, Context contexto) {
+        this.listaMascotas = listaMascotas;
+        this.layoutId = layoutId;
+        this.contexto = contexto;
     }
 
     @Override
-    public View getView(int posicion, View convertView, ViewGroup parent) {
-        if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.elementos, parent, false);
-        }
-
-        Elementos elemento = elementos.get(posicion);
-
-        TextView titulo = convertView.findViewById(R.id.titulo);
-        TextView contenido = convertView.findViewById(R.id.contenido);
-
-        titulo.setText(elemento.getTitulo());
-        contenido.setText(elemento.getContenido());
-
-        return convertView;
+    public int getCount() {
+        return listaMascotas.size();
     }
 
+    @Override
+    public Object getItem(int position) {
+        return listaMascotas.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(int position, View view, ViewGroup parent) {
+        if (view == null) {
+            LayoutInflater inflater = (LayoutInflater) contexto.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            view = inflater.inflate(layoutId, null);
+        }
+
+        onEntrada(listaMascotas.get(position), view);
+        return view;
+    }
+
+    public abstract void onEntrada(Object entrada, View view);
 }
