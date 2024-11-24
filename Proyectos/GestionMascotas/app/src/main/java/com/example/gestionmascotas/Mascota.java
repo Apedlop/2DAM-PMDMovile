@@ -2,6 +2,7 @@ package com.example.gestionmascotas;
 
 public class Mascota {
 
+    private int id;  // Atributo id único
     private String nombre;
     private String raza;
     private int imagen;
@@ -10,10 +11,10 @@ public class Mascota {
     private boolean vacunada;
     private boolean desparacitada;
     private boolean esterilizada;
+    private static int idCounter = 0;  // Contador estático para generar IDs únicos
 
-    // Constructor
-    public Mascota(String nombre, String raza, int imagen, int edad, float peso,
-                   boolean vacunada, boolean desparacitada, boolean esterilizada) {
+    public Mascota(String nombre, String raza, int imagen, int edad, float peso, boolean vacunada, boolean desparacitada, boolean esterilizada) {
+        this.id = ++idCounter;  // Asigna un ID único autoincremental
         this.nombre = nombre;
         this.raza = raza;
         this.imagen = imagen;
@@ -25,6 +26,14 @@ public class Mascota {
     }
 
     // Métodos getter y setter para cada propiedad
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNombre() {
         return nombre;
@@ -90,5 +99,18 @@ public class Mascota {
         this.esterilizada = esterilizada;
     }
 
-
+    @Override
+    public String toString() {
+        return "Mascota{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", raza='" + raza + '\'' +
+                ", imagen=" + imagen +
+                ", edad=" + edad +
+                ", peso=" + peso +
+                ", vacunada=" + vacunada +
+                ", desparacitada=" + desparacitada +
+                ", esterilizada=" + esterilizada +
+                '}';
+    }
 }

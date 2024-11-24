@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Estilo para personalizar la ActionBar -->
+    <style name="CustomTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- Estilo personalizado para los ítems del menú -->
+    <style name="MenuItemStyle">
+        <!-- Fondo de los ítems del menú -->
+        <item name="android:background">@color/menu_item_background</item>
+        <!-- Color del texto de los ítems del menú -->
+        <item name="android:textColor">@color/menu_item_text_color</item>
+    </style>
+</resources>

@@ -2,4 +2,14 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="colorPrimary">#FF5733</color> <!-- Color principal -->
+    <color name="colorPrimaryDark">#C70039</color> <!-- Versión oscura -->
+    <color name="colorAccent">#900C3F</color> <!-- Color de acento -->
+    <!-- Color de fondo para los ítems del menú -->
+    <color name="menu_item_background">#E76767</color> <!-- Blanco -->
+
+    <!-- Color del texto para los ítems del menú -->
+    <color name="menu_item_text_color">#F8A245</color> <!-- Negro -->
+
 </resources>

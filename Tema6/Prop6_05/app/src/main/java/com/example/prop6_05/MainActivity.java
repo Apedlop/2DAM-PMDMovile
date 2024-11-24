@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView = findViewById(R.id.textView); // Inicializamos el TextView desde el XML
+
     }
 
     @Override
@@ -27,74 +28,51 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         String mensaje = "";
 
-        switch (item.getItemId()) {
-            // Submenú de días de la semana
-            case R.id.lunes:
-                mensaje = "Pulsado LUNES";
-                break;
-            case R.id.martes:
-                mensaje = "Pulsado MARTES";
-                break;
-            case R.id.miercoles:
-                mensaje = "Pulsado MIÉRCOLES";
-                break;
-            case R.id.jueves:
-                mensaje = "Pulsado JUEVES";
-                break;
-            case R.id.viernes:
-                mensaje = "Pulsado VIERNES";
-                break;
-            case R.id.sabado:
-                mensaje = "Pulsado SÁBADO";
-                break;
-            case R.id.domingo:
-                mensaje = "Pulsado DOMINGO";
-                break;
-
-            // Submenú de meses del año
-            case R.id.enero:
-                mensaje = "Pulsado ENERO";
-                break;
-            case R.id.febrero:
-                mensaje = "Pulsado FEBRERO";
-                break;
-            case R.id.marzo:
-                mensaje = "Pulsado MARZO";
-                break;
-            case R.id.abril:
-                mensaje = "Pulsado ABRIL";
-                break;
-            case R.id.mayo:
-                mensaje = "Pulsado MAYO";
-                break;
-            case R.id.junio:
-                mensaje = "Pulsado JUNIO";
-                break;
-            case R.id.julio:
-                mensaje = "Pulsado JULIO";
-                break;
-            case R.id.agosto:
-                mensaje = "Pulsado AGOSTO";
-                break;
-            case R.id.septiembre:
-                mensaje = "Pulsado SEPTIEMBRE";
-                break;
-            case R.id.octubre:
-                mensaje = "Pulsado OCTUBRE";
-                break;
-            case R.id.noviembre:
-                mensaje = "Pulsado NOVIEMBRE";
-                break;
-            case R.id.diciembre:
-                mensaje = "Pulsado DICIEMBRE";
-                break;
-
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == R.id.lunes) {
+            mensaje = "Pulsado LUNES";
+        } else if (item.getItemId() == R.id.martes) {
+            mensaje = "Pulsado MARTES";
+        } else if (item.getItemId() == R.id.miercoles) {
+            mensaje = "Pulsado MIÉRCOLES";
+        } else if (item.getItemId() == R.id.jueves) {
+            mensaje = "Pulsado JUEVES";
+        } else if (item.getItemId() == R.id.viernes) {
+            mensaje = "Pulsado VIERNES";
+        } else if (item.getItemId() == R.id.sabado) {
+            mensaje = "Pulsado SÁBADO";
+        } else if (item.getItemId() == R.id.domingo) {
+            mensaje = "Pulsado DOMINGO";
+        } else if (item.getItemId() == R.id.enero) {
+            mensaje = "Pulsado ENERO";
+        } else if (item.getItemId() == R.id.febrero) {
+            mensaje = "Pulsado FEBRERO";
+        } else if (item.getItemId() == R.id.marzo) {
+            mensaje = "Pulsado MARZO";
+        } else if (item.getItemId() == R.id.abril) {
+            mensaje = "Pulsado ABRIL";
+        } else if (item.getItemId() == R.id.mayo) {
+            mensaje = "Pulsado MAYO";
+        } else if (item.getItemId() == R.id.junio) {
+            mensaje = "Pulsado JUNIO";
+        } else if (item.getItemId() == R.id.julio) {
+            mensaje = "Pulsado JULIO";
+        } else if (item.getItemId() == R.id.agosto) {
+            mensaje = "Pulsado AGOSTO";
+        } else if (item.getItemId() == R.id.septiembre) {
+            mensaje = "Pulsado SEPTIEMBRE";
+        } else if (item.getItemId() == R.id.octubre) {
+            mensaje = "Pulsado OCTUBRE";
+        } else if (item.getItemId() == R.id.noviembre) {
+            mensaje = "Pulsado NOVIEMBRE";
+        } else if (item.getItemId() == R.id.diciembre) {
+            mensaje = "Pulsado DICIEMBRE";
+        } else {
+            return super.onOptionsItemSelected(item);
         }
 
         // Establecer el texto en el TextView
         textView.setText(mensaje);
         return true;
+
     }
 }

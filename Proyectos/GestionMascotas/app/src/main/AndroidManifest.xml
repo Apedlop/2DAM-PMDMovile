@@ -9,27 +9,28 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.GestionMascotas">
-
-        <!-- Actividad de Listado de Mascotas -->
         <activity
-            android:name=".ListadoMascotas"
+            android:name=".EditarMascota"
             android:exported="false" />
-
-        <!-- Actividad de Información Detallada -->
+        <!-- Actividad de Listado de Mascotas para Usuario -->
+        <activity
+            android:name=".ListadoMascotasUser"
+            android:exported="false" /> <!-- Actividad de Listado de Mascotas para Administrador -->
+        <activity
+            android:name=".ListadoMascotasAdmin"
+            android:exported="false" /> <!-- Actividad de Información Detallada -->
         <activity
             android:name=".InfoDetallada"
-            android:exported="false" />
-
-        <!-- Actividad Principal (Inicio de sesión) -->
+            android:exported="false" /> <!-- Actividad Principal (Inicio de sesión) -->
         <activity
             android:name=".InicioSesion"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
-public class ListadoMascotas extends AppCompatActivity {
+public class ListadoMascotasUser extends AppCompatActivity {
 
     private ListView lista;
 
@@ -68,7 +68,7 @@ public class ListadoMascotas extends AppCompatActivity {
             Mascota mascotaSeleccionada = (Mascota) parent.getItemAtPosition(position);
 
             // Crear un Intent para abrir la Activity InfoDetallada
-            Intent intent = new Intent(ListadoMascotas.this, InfoDetallada.class);
+            Intent intent = new Intent(ListadoMascotasUser.this, InfoDetallada.class);
 
             // Pasar los datos de la mascota a la nueva Activity
             intent.putExtra("nombre", mascotaSeleccionada.getNombre());

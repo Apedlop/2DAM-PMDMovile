@@ -38,22 +38,31 @@ public class InicioSesion extends AppCompatActivity {
         btInicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Obetenr texto ingresado en los EditText
+                // Obtenemos el texto ingresado en los EditText
                 String usuario = nomUsuario.getText().toString();
                 String contraseña = nomContraseña.getText().toString();
 
                 // Validar usuario y contraseña
                 if (usuarios.containsKey(usuario) && usuarios.get(usuario).equals(contraseña)) {
-                    Intent intent = new Intent(InicioSesion.this, ListadoMascotas.class);
-                    intent.putExtra("usuario", usuario);
-                    startActivity(intent);
-                    Toast.makeText(InicioSesion.this, "Incio de sesión exitoso", Toast.LENGTH_SHORT).show();
+                    if (usuario.equals("admin")) {
+                        // Si es admin, abrir actividad para admin
+                        Intent intent = new Intent(InicioSesion.this, ListadoMascotasAdmin.class);
+                        intent.putExtra("usuario", usuario);
+                        startActivity(intent);
+                        Toast.makeText(InicioSesion.this, "Inicio de sesión exitoso como Admin", Toast.LENGTH_SHORT).show();
+                    } else {
+                        // Si es usuario normal, abrir actividad para usuario
+                        Intent intent = new Intent(InicioSesion.this, ListadoMascotasUser.class);
+                        intent.putExtra("usuario", usuario);
+                        startActivity(intent);
+                        Toast.makeText(InicioSesion.this, "Inicio de sesión exitoso como Usuario", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
+                    // Si el usuario o la contraseña son incorrectos
                     inicioNulo = findViewById(R.id.inicioNulo);
                     inicioNulo.setText("Usuario o contraseña incorrectos");
                 }
             }
         });
-
     }
 }
