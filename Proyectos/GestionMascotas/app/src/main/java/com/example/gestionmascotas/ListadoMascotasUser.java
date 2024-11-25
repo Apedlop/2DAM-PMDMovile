@@ -2,18 +2,28 @@ package com.example.gestionmascotas;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.HeaderViewListAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class ListadoMascotasUser extends AppCompatActivity {
 
     private ListView lista;
+    private Mascota mascotaSeleccionada;
+    private ArrayList<Mascota> listaMascotas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,19 +34,18 @@ public class ListadoMascotasUser extends AppCompatActivity {
         Intent obtenerUsuario = getIntent();
         String usuario = obtenerUsuario.getStringExtra("usuario");
 
-        // Inflar la cabecera y añadirla en el Activity
-        ArrayList<Mascota> listaMascotas = new ArrayList<>();
-        lista = findViewById(R.id.lista);
-        View cabecera = getLayoutInflater().inflate(R.layout.cabecera, null);
-        lista.addHeaderView(cabecera);
+        // Añadir menu personalizado
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        // Cambiar nombre del usuario en la cabecera
-        TextView nomUsuario = cabecera.findViewById(R.id.nomUsuario);
-        if (nomUsuario != null) {
-            nomUsuario.setText(usuario);  // Establecer el nombre del usuario en el TextView
-        } else {
-            System.out.println("No se encontró el TextView 'nomUsuario'");
-        }
+        // Inicializar la lista de mascotas
+        listaMascotas = new ArrayList<>();
+        lista = findViewById(R.id.lista);
+
+        // Cambiar nombre del usuario
+        TextView nomUsuario = findViewById(R.id.nomUsuario);
+        nomUsuario.setText(usuario);
 
         // Crear los datos para el adaptador
         listaMascotas.add(new Mascota("Yoyo", "Bodeguero", R.drawable.bodeguero, 3, 25.0f, true, true, false));
@@ -65,24 +74,57 @@ public class ListadoMascotasUser extends AppCompatActivity {
 
         // Configurar el evento de clic en los ítems del ListView
         lista.setOnItemClickListener((parent, view, position, id) -> {
-            Mascota mascotaSeleccionada = (Mascota) parent.getItemAtPosition(position);
+            mascotaSeleccionada = (Mascota) parent.getItemAtPosition(position);
 
             // Crear un Intent para abrir la Activity InfoDetallada
             Intent intent = new Intent(ListadoMascotasUser.this, InfoDetallada.class);
 
-            // Pasar los datos de la mascota a la nueva Activity
-            intent.putExtra("nombre", mascotaSeleccionada.getNombre());
-            intent.putExtra("raza", mascotaSeleccionada.getRaza());
-            intent.putExtra("imagen", mascotaSeleccionada.getImagen());
-            intent.putExtra("edad", mascotaSeleccionada.getEdad());
-            intent.putExtra("peso", mascotaSeleccionada.getPeso());
-            intent.putExtra("vacunada", mascotaSeleccionada.isVacunada());
-            intent.putExtra("desparacitada", mascotaSeleccionada.isDesparacitada());
-            intent.putExtra("esterilizada", mascotaSeleccionada.isEsterilizada());
-            intent.putExtra("usuario", usuario);  // Pasar el usuario a la actividad de detalles
+            // Pasar el objeto Mascota completo a la nueva Activity
+            intent.putExtra("mascota", mascotaSeleccionada);
+            intent.putExtra("usuario", usuario);
 
-            // Iniciar la Activity InfoDetallada
             startActivity(intent);
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Infla el menú (tres puntitos)
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Manejo del menú normal
+        if (item.getItemId() == R.id.ordenarNombre) {
+            // Ordenar por nombre
+            Collections.sort(listaMascotas, new Comparator<Mascota>() {
+                @Override
+                public int compare(Mascota o1, Mascota o2) {
+                    return o1.getNombre().compareToIgnoreCase(o2.getNombre());
+                }
+            });
+            // Notificar al adaptador
+            ((Adaptador) lista.getAdapter()).notifyDataSetChanged();
+            Toast.makeText(this, "Lista ordenada por nombre", Toast.LENGTH_SHORT).show();
+            return true;
+
+        } else if (item.getItemId() == R.id.ordenarRaza) {
+            // Ordenar por raza
+            Collections.sort(listaMascotas, new Comparator<Mascota>() {
+                @Override
+                public int compare(Mascota o1, Mascota o2) {
+                    return o1.getRaza().compareToIgnoreCase(o2.getRaza());
+                }
+            });
+            // Notificar al adaptador
+            ((Adaptador) lista.getAdapter()).notifyDataSetChanged();
+            Toast.makeText(this, "Lista ordenada por raza", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+
+        // Si no es ninguna de las anteriores opciones, delega el resto a la implementación por defecto
+        return super.onOptionsItemSelected(item);
     }
 }
