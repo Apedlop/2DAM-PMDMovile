@@ -5,17 +5,35 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/radioButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Opción 1" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Opción 2" />
+    </RadioGroup>
+
     <EditText
         android:id="@+id/editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Edita el item"
-        android:textSize="18sp" />
+        android:hint="Editar texto" />
 
     <Button
-        android:id="@+id/saveButton"
+        android:id="@+id/buttonSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Guardar"
-        android:layout_marginTop="16dp"/>
+        android:text="Guardar Cambios" />
+
 </LinearLayout>

@@ -2,54 +2,64 @@ package com.example.editarlista;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
+import android.view.View;
 import android.widget.EditText;
-
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class EditActivity extends AppCompatActivity {
 
     private EditText editText;
-    private int itemPosition;
-    private String oldItemData;
+    private RadioGroup radioGroup;
+    private RadioButton radioButton1;
+    private RadioButton radioButton2;
+    private int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
 
-        // Inicializamos el EditText
         editText = findViewById(R.id.editText);
+        radioGroup = findViewById(R.id.radioGroup);
+        radioButton1 = findViewById(R.id.radioButton1);
+        radioButton2 = findViewById(R.id.radioButton2);
+        Button saveButton = findViewById(R.id.buttonSave);
 
-        // Obtenemos la posición del item y el dato a editar desde la Intent
-        itemPosition = getIntent().getIntExtra("item_position", -1);
-        oldItemData = getIntent().getStringExtra("item_data");
+        // Recibir los datos enviados desde MainActivity
+        Intent intent = getIntent();
+        position = intent.getIntExtra("position", -1);
+        String text = intent.getStringExtra("text");
+        int selectedOption = intent.getIntExtra("option", 0);
 
-        // Mostramos el dato que se va a editar en el EditText
-        editText.setText(oldItemData);
+        // Configurar los campos para que el usuario pueda editarlos
+        editText.setText(text);
 
-        // Configuramos el botón para guardar los cambios
-        Button saveButton = findViewById(R.id.saveButton);
-        saveButton.setOnClickListener(v -> saveItem());
-    }
-
-    private void saveItem() {
-        // Obtener el nuevo dato editado
-        String newItemData = editText.getText().toString();
-
-        // Validar si el dato no está vacío
-        if (newItemData.isEmpty()) {
-            editText.setError("El campo no puede estar vacío");
-            return;
+        if (selectedOption == 1) {
+            radioButton1.setChecked(true);
+        } else if (selectedOption == 2) {
+            radioButton2.setChecked(true);
         }
 
-        // Crear un Intent para devolver el dato editado
-        Intent resultIntent = new Intent();
-        resultIntent.putExtra("item_position", itemPosition); // Pasar la posición
-        resultIntent.putExtra("new_item_data", newItemData);  // Pasar el nuevo dato
-        setResult(RESULT_OK, resultIntent);
+        // Configurar el botón de guardar
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Obtener los datos editados
+                String newText = editText.getText().toString();
+                int newOption = radioGroup.getCheckedRadioButtonId() == R.id.radioButton1 ? 1 : 2;
 
-        // Finalizar la actividad y regresar a la actividad principal
-        finish();
+                // Devolver los datos modificados a MainActivity
+                Intent resultIntent = new Intent();
+                resultIntent.putExtra("position", position);
+                resultIntent.putExtra("text", newText);  // El texto editado
+                resultIntent.putExtra("option", selectedOption);  // La opción seleccionada en el RadioGroup
+                setResult(RESULT_OK, resultIntent);
+                finish();  // Finaliza la actividad y regresa a MainActivity
+
+            }
+        });
     }
 }

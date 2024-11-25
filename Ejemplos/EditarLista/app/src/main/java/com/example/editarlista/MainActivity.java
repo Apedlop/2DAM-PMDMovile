@@ -2,87 +2,71 @@ package com.example.editarlista;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.ContextMenu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.editarlista.CustomAdapter;
+import com.example.editarlista.ListItem;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ListView listView;
-    private ArrayList<String> items;
-    private ArrayAdapter<String> adapter;
+    ArrayList<ListItem> items;
+    CustomAdapter adapter;
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Inicializar el ListView y los datos
-        listView = findViewById(R.id.listView);
+        // Inicializa los elementos de la lista
         items = new ArrayList<>();
-        items.add("Elemento 1");
-        items.add("Elemento 2");
-        items.add("Elemento 3");
+        items.add(new ListItem("Elemento 1", 0));
+        items.add(new ListItem("Elemento 2", 0));
+        items.add(new ListItem("Elemento 3", 0));
 
-        // Configurar el adaptador
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
+        // Configura el adaptador
+        adapter = new CustomAdapter(this, items);  // Debería ser solo 'items', sin la referencia 'resource'
+        listView = findViewById(R.id.listView);
         listView.setAdapter(adapter);
 
-        // Registrar el ListView para el menú contextual
-        registerForContextMenu(listView);
+        // Al hacer clic en un ítem de la lista, abrir EditActivity
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Crear un intent para abrir la EditActivity
+                Intent intent = new Intent(MainActivity.this, EditActivity.class);
+
+                // Pasar los datos
+                intent.putExtra("position", position);
+                intent.putExtra("text", items.get(position).getText());
+                intent.putExtra("option", items.get(position).getSelecedOption());
+
+                // Iniciar EditActivity
+                startActivityForResult(intent, 1);
+            }
+        });
+
     }
-
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-        // Inflar el menú contextual
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.context_menu, menu);
-    }
-
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        int position = info.position; // Obtener la posición del elemento seleccionado
-
-        // Usamos un if-else en lugar de switch
-        if (item.getItemId() == R.id.edit_option) {
-            // Llamar a la actividad para editar el item
-            String itemToEdit = items.get(position);
-            Intent intent = new Intent(MainActivity.this, EditActivity.class);
-            intent.putExtra("item_position", position); // Pasar la posición del ítem
-            intent.putExtra("item_data", itemToEdit);   // Pasar el dato a editar
-            startActivityForResult(intent, 1);  // Iniciar la actividad para editar
-            return true;
-        } else {
-            return super.onContextItemSelected(item);
-        }
-    }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == 1 && resultCode == RESULT_OK) {
-            int position = data.getIntExtra("item_position", -1);
-            String newItemData = data.getStringExtra("new_item_data");
+            int position = data.getIntExtra("position", -1);
+            String newText = data.getStringExtra("text");
+            int newOption = data.getIntExtra("option", 0);
 
-            if (position != -1 && newItemData != null) {
-                // Actualizar el item en la lista
-                items.set(position, newItemData);
-
-                // Notificar al adaptador para refrescar el ListView
-                adapter.notifyDataSetChanged();
+            if (position != -1) {
+                items.get(position).setText(newText);  // Asegúrate de que setText esté implementado
+                items.get(position).setSelecedOption(newOption);  // Asegúrate de que setSelecedOption esté implementado correctamente
+                adapter.notifyDataSetChanged();  // Actualiza la lista
             }
         }
     }
+
 }

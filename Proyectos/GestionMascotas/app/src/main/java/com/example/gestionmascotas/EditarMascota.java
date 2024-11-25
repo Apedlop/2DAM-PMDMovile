@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class EditarMascota extends AppCompatActivity {
 
     private EditText etNombre, etRaza, etEdad, etPeso;
-    private Button btnGuardar;
+    private Button btnGuardar, btnCancelar;
     private RadioGroup rgVacunada, rgDesparacitada, rgEsterilizada;
 
     private String nombre, raza;
@@ -103,6 +103,10 @@ public class EditarMascota extends AppCompatActivity {
 
             setResult(RESULT_OK, resultIntent);  // Devolver los datos a la actividad anterior
             finish();  // Cerrar la actividad actual
+        });
+
+        btnCancelar.setOnClickListener(v -> {
+            finish();
         });
     }
 }
