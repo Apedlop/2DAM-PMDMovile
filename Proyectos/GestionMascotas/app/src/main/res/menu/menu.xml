@@ -3,8 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/ordenarNombre"
-        android:title="Ordenar por Nombre" />
+        android:title="Ordenar por Nombre"
+        app:iconTint="@color/titulo"
+        android:titleTextColor="@color/fondo"/>
     <item
         android:id="@+id/ordenarRaza"
-        android:title="Ordenar por Raza"/>
+        android:title="Ordenar por Raza"
+        app:iconTint="@color/titulo"
+        android:titleTextColor="@color/fondo"/>
+    <item
+        android:id="@+id/añadirMascota"
+        android:title="Añadir Mascota"
+        app:iconTint="@color/titulo"
+        android:titleTextColor="@color/fondo"/>
 </menu>

@@ -15,6 +15,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -170,7 +174,6 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
             ((Adaptador) lista.getAdapter()).notifyDataSetChanged();
             Toast.makeText(this, "Lista ordenada por nombre", Toast.LENGTH_SHORT).show();
             return true;
-
         } else if (item.getItemId() == R.id.ordenarRaza) {
             // Ordenar por raza
             Collections.sort(listaMascotas, new Comparator<Mascota>() {
@@ -183,6 +186,10 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
             ((Adaptador) lista.getAdapter()).notifyDataSetChanged();
             Toast.makeText(this, "Lista ordenada por raza", Toast.LENGTH_SHORT).show();
             return true;
+        } else if (item.getItemId() == R.id.añadirMascota) {
+            // Añadir una mascota nueva
+            Intent intent = new Intent(this, AñadirMascota.class);
+            startActivity(intent);
         }
 
         // Si no es ninguna de las anteriores opciones, delega el resto a la implementación por defecto
