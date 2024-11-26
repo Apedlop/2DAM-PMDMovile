@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.HeaderViewListAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -48,8 +46,8 @@ public class ListadoMascotasUser extends AppCompatActivity {
         nomUsuario.setText(usuario);
 
         // Crear los datos para el adaptador
-        listaMascotas.add(new Mascota("Yoyo", "Bodeguero", R.drawable.bodeguero, 3, 25.0f, true, true, false));
-        listaMascotas.add(new Mascota("Max", "Labrador", R.drawable.bodeguero, 5, 30.5f, true, false, true));
+        listaMascotas.add(new Mascota("Yoyo", "Bodeguero", R.drawable.imagen_perro, 3, 25.0f, true, true, false));
+        listaMascotas.add(new Mascota("Max", "Labrador", R.drawable.imagen_perro, 5, 30.5f, true, false, true));
 
         // Configurar el adaptador para el ListView
         lista.setAdapter(new Adaptador(listaMascotas, R.layout.elementos, this) {

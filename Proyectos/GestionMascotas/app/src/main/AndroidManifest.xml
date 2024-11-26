@@ -10,18 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GestionMascotas">
         <activity
+            android:name=".AñadirMascota"
+            android:exported="false" />
+        <activity
             android:name=".EditarMascota"
             android:exported="false" />
-        <!-- Actividad de Listado de Mascotas para Usuario -->
         <activity
             android:name=".ListadoMascotasUser"
-            android:exported="false" /> <!-- Actividad de Listado de Mascotas para Administrador -->
+            android:exported="false" />
         <activity
             android:name=".ListadoMascotasAdmin"
-            android:exported="false" /> <!-- Actividad de Información Detallada -->
+            android:exported="false" />
         <activity
             android:name=".InfoDetallada"
-            android:exported="false" /> <!-- Actividad Principal (Inicio de sesión) -->
+            android:exported="false" />
         <activity
             android:name=".InicioSesion"
             android:exported="true">

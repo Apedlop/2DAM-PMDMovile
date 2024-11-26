@@ -2,6 +2,7 @@ package com.example.gestionmascotas;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -13,11 +14,9 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -52,8 +51,8 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
         nomUsuario.setText(usuario);
 
         // Agregar algunas mascotas de ejemplo a la lista
-        listaMascotas.add(new Mascota("Yoyo", "Bodeguero", R.drawable.bodeguero, 3, 25.0f, true, true, false));
-        listaMascotas.add(new Mascota("Leon", "Labrador", R.drawable.bodeguero, 5, 30.5f, true, false, true));
+        listaMascotas.add(new Mascota("Yoyo", "Bodeguero", R.drawable.imagen_perro, 3, 25.0f, true, true, false));
+        listaMascotas.add(new Mascota("Leon", "Labrador", R.drawable.imagen_perro, 5, 30.5f, true, false, true));
 
         // Configurar el adaptador para el ListView
         lista.setAdapter(new Adaptador(listaMascotas, R.layout.elementos, this) {
@@ -149,7 +148,23 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
                 ((Adaptador) lista.getAdapter()).notifyDataSetChanged();
                 Toast.makeText(this, "Mascota modificada con éxito", Toast.LENGTH_SHORT).show();
             }
+        } else  if (requestCode == 2 && resultCode == RESULT_OK && data != null) {
+            ArrayList<Mascota> listaMascotasRecibida = (ArrayList<Mascota>) data.getSerializableExtra("mascotas");
+
+            if (listaMascotasRecibida != null && !listaMascotasRecibida.isEmpty()) {
+                // Obtener la última mascota de la lista
+                Mascota ultimaMascota = listaMascotasRecibida.get(listaMascotasRecibida.size() - 1);
+
+                // Asegúrate de no añadir la misma mascota si ya está en la lista
+                if (!listaMascotas.contains(ultimaMascota)) {
+                    listaMascotas.add(ultimaMascota);  // Añadir solo la última mascota
+                    ((Adaptador) lista.getAdapter()).notifyDataSetChanged();
+                    Toast.makeText(this, "Mascota añadida", Toast.LENGTH_SHORT).show();
+                }
+            }
         }
+
+
     }
 
     @Override
@@ -189,7 +204,7 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
         } else if (item.getItemId() == R.id.añadirMascota) {
             // Añadir una mascota nueva
             Intent intent = new Intent(this, AñadirMascota.class);
-            startActivity(intent);
+            startActivityForResult(intent, 2);
         }
 
         // Si no es ninguna de las anteriores opciones, delega el resto a la implementación por defecto

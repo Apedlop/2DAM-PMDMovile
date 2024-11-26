@@ -16,7 +16,7 @@
             android:id="@+id/imagen"
             android:layout_width="match_parent"
             android:layout_height="125dp"
-            android:src="@drawable/bodeguero"
+            android:src="@drawable/imagen_perro"
             android:contentDescription="Imagen de mascota" />
 
     </LinearLayout>
