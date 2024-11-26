@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="@color/titulo"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+    <!-- Contenedor de usuario a la izquierda -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/icono_user" />
+
+        <TextView
+            android:id="@+id/nomUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User"
+            android:textColor="@color/fondo"
+            android:gravity="center_vertical"/>
+    </LinearLayout>
+
+    <!-- Título centrado -->
+    <TextView
+        android:id="@+id/appTitle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Gestión de Mascotas"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textColor="@color/fondo"
+        android:gravity="center"
+        android:layout_gravity="center" />
+</androidx.appcompat.widget.Toolbar>

@@ -5,6 +5,10 @@
     android:orientation="vertical"
     android:background="@color/fondo">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/menu_personalizado" />
+
     <ListView
         android:id="@+id/lista"
         android:layout_width="match_parent"

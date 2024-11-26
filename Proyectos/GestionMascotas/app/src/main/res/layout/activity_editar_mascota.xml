@@ -164,18 +164,19 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/btnGuardar"
                     style="@style/botonGuardarEdicion"
                     android:text="Guardar"/>
+
                 <Button
                     android:id="@+id/btnCancelar"
+                    android:layout_marginLeft="15dp"
                     style="@style/botonGuardarEdicion"
-                    android:layout_marginLeft="20dp"
-                    android:text="Cancelar"/>
+                    android:text="Cancelar" />
+
             </LinearLayout>
         </LinearLayout>
     </FrameLayout>

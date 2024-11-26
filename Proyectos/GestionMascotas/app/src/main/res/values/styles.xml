@@ -13,10 +13,11 @@
         <item name="android:textColor">@color/titulo</item>
     </style>
     <style name="botonGuardarEdicion">
-        <item name="android:layout_width">105dp</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">45dp</item>
         <item name="android:textColor">@color/fondo</item>
         <item name="android:backgroundTint">@color/titulo</item>
+        <item name="android:textSize">18dp</item>
         <item name="cornerRadius">0dp</item>
         <item name="android:layout_marginBottom">15dp</item>
     </style>

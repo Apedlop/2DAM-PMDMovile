@@ -2,9 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/ordenarNombre"
-        android:title="Ordenar por Nombre" />
-    <item
-        android:id="@+id/ordenarRaza"
-        android:title="Ordenar por Raza"/>
+        android:id="@+id/action_settings"
+        android:title="Configuración"
+        android:icon="@drawable/icono"
+        app:showAsAction="never" />
 </menu>
