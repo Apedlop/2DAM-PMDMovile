@@ -118,8 +118,7 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
                 listaMascotas.remove(posicion);
 
                 // Obtener el adaptador envuelto y notificar el cambio
-                Adaptador adaptador = (Adaptador) ((HeaderViewListAdapter) lista.getAdapter()).getWrappedAdapter();
-                adaptador.notifyDataSetChanged();
+                ((Adaptador) lista.getAdapter()).notifyDataSetChanged();
 
                 // Mostrar mensaje de éxito
                 Toast.makeText(this, "Mascota eliminada", Toast.LENGTH_SHORT).show();
