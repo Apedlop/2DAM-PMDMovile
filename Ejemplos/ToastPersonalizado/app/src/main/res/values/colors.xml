@@ -2,7 +2,4 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="titulo">#bd793f</color>
-    <color name="toast">#C88C5C</color>
-    <color name="fondo">#faebda</color>
 </resources>

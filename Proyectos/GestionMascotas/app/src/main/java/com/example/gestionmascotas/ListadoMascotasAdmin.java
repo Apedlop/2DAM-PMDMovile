@@ -1,13 +1,16 @@
 package com.example.gestionmascotas;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.HeaderViewListAdapter;
 import android.widget.ImageView;
@@ -121,10 +124,10 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
                 ((Adaptador) lista.getAdapter()).notifyDataSetChanged();
 
                 // Mostrar mensaje de éxito
-                Toast.makeText(this, "Mascota eliminada", Toast.LENGTH_SHORT).show();
+                mostrarToast("Mascota eliminada");
             } else {
                 // Mostrar mensaje de error si la posición no es válida
-                Toast.makeText(this, "Error al eliminar la mascota", Toast.LENGTH_SHORT).show();
+                mostrarToast("Error al eliminar la mascota");
             }
             return true;
         }
@@ -145,7 +148,7 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
 
                 // Notifica al adaptador que los datos han cambiado
                 ((Adaptador) lista.getAdapter()).notifyDataSetChanged();
-                Toast.makeText(this, "Mascota modificada con éxito", Toast.LENGTH_SHORT).show();
+                mostrarToast("Mascota modificada con éxito");
             }
         } else  if (requestCode == 2 && resultCode == RESULT_OK && data != null) {
             ArrayList<Mascota> listaMascotasRecibida = (ArrayList<Mascota>) data.getSerializableExtra("mascotas");
@@ -158,7 +161,7 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
                 if (!listaMascotas.contains(ultimaMascota)) {
                     listaMascotas.add(ultimaMascota);  // Añadir solo la última mascota
                     ((Adaptador) lista.getAdapter()).notifyDataSetChanged();
-                    Toast.makeText(this, "Mascota añadida", Toast.LENGTH_SHORT).show();
+                    mostrarToast("Mascota añadida");
                 }
             }
         }
@@ -186,7 +189,7 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
             });
             // Notificar al adaptador
             ((Adaptador) lista.getAdapter()).notifyDataSetChanged();
-            Toast.makeText(this, "Lista ordenada por nombre", Toast.LENGTH_SHORT).show();
+            mostrarToast("Lista ordenada por nombre");
             return true;
         } else if (item.getItemId() == R.id.ordenarRaza) {
             // Ordenar por raza
@@ -198,7 +201,7 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
             });
             // Notificar al adaptador
             ((Adaptador) lista.getAdapter()).notifyDataSetChanged();
-            Toast.makeText(this, "Lista ordenada por raza", Toast.LENGTH_SHORT).show();
+            mostrarToast("Lista ordenada por raza");
             return true;
         } else if (item.getItemId() == R.id.añadirMascota) {
             // Añadir una mascota nueva
@@ -208,6 +211,20 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
 
         // Si no es ninguna de las anteriores opciones, delega el resto a la implementación por defecto
         return super.onOptionsItemSelected(item);
+    }
+
+    // Método para mostrar toast
+    @SuppressLint("MissingInflatedId")
+    public void mostrarToast(String mensaje) {
+        // Toast personalizado
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast, (ViewGroup) findViewById(R.id.layotu_toast));
+        TextView textoToast = layout.findViewById(R.id.textoToast);
+        textoToast.setText(mensaje);
+        Toast toast = new Toast(getApplicationContext());
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(layout);
+        toast.show();
     }
 
 }

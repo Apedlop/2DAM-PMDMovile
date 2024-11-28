@@ -1,14 +1,19 @@
 package com.example.gestionmascotas;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.w3c.dom.Text;
 
 import java.util.HashMap;
 
@@ -49,13 +54,15 @@ public class InicioSesion extends AppCompatActivity {
                         Intent intent = new Intent(InicioSesion.this, ListadoMascotasAdmin.class);
                         intent.putExtra("usuario", usuario);
                         startActivity(intent);
-                        Toast.makeText(InicioSesion.this, "Inicio de sesión exitoso como Admin", Toast.LENGTH_SHORT).show();
+                        // Toast personalizado
+                        mostrarToast("Inicio de sesión exitoso como Admin");
                     } else {
                         // Si es usuario normal, abrir actividad para usuario
                         Intent intent = new Intent(InicioSesion.this, ListadoMascotasUser.class);
                         intent.putExtra("usuario", usuario);
                         startActivity(intent);
-                        Toast.makeText(InicioSesion.this, "Inicio de sesión exitoso como Usuario", Toast.LENGTH_SHORT).show();
+                        // Toast personalizado
+                        mostrarToast("Inicio de sesión exitoso como " + usuario);
                     }
                 } else {
                     // Si el usuario o la contraseña son incorrectos
@@ -64,5 +71,19 @@ public class InicioSesion extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    // Método para mostrar toast
+    @SuppressLint("MissingInflatedId")
+    public void mostrarToast(String mensaje) {
+        // Toast personalizado
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast, (ViewGroup) findViewById(R.id.layotu_toast));
+        TextView textoToast = layout.findViewById(R.id.textoToast);
+        textoToast.setText(mensaje);
+        Toast toast = new Toast(getApplicationContext());
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(layout);
+        toast.show();
     }
 }

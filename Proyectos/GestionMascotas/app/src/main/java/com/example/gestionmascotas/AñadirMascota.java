@@ -1,12 +1,17 @@
 package com.example.gestionmascotas;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ArrayAdapter;
 import android.widget.AdapterView;
@@ -89,7 +94,7 @@ public class AñadirMascota extends AppCompatActivity {
 
             // Verificar si los campos edad y peso están vacíos
             if (nombre.isEmpty() || raza.isEmpty() || edadStr.isEmpty() || pesoStr.isEmpty()) {
-                Toast.makeText(AñadirMascota.this, "Todos los campos son obligatorios", Toast.LENGTH_SHORT).show();
+                mostrarToast("Todos los campos son obligatorios");
                 return; // Salir si hay campos vacíos
             }
 
@@ -99,7 +104,7 @@ public class AñadirMascota extends AppCompatActivity {
                 edad = Integer.parseInt(edadStr); // Intentar convertir a entero
                 peso = Float.parseFloat(pesoStr); // Intentar convertir a float
             } catch (NumberFormatException e) {
-                Toast.makeText(AñadirMascota.this, "Edad y peso deben ser números válidos", Toast.LENGTH_SHORT).show();
+                mostrarToast("Edad y peso deben ser números válidos");
                 return; // Salir si la conversión falla
             }
 
@@ -145,15 +150,18 @@ public class AñadirMascota extends AppCompatActivity {
         }
     }
 
-    // Método para limpiar el formulario después de guardar
-    private void limpiarFormulario() {
-        etNombre.setText("");
-        etRaza.setText("");
-        etEdad.setText("");
-        etPeso.setText("");
-        rgVacunada.clearCheck();
-        rgDesparacitada.clearCheck();
-        rgEsterilizada.clearCheck();
-        spinnerTipoMascota.setSelection(0); // Resetear Spinner al primer elemento
+    // Método para mostrar toast
+    @SuppressLint("MissingInflatedId")
+    public void mostrarToast(String mensaje) {
+        // Toast personalizado
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast, (ViewGroup) findViewById(R.id.layotu_toast));
+        TextView textoToast = layout.findViewById(R.id.textoToast);
+        textoToast.setText(mensaje);
+        Toast toast = new Toast(getApplicationContext());
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(layout);
+        toast.show();
     }
+
 }
