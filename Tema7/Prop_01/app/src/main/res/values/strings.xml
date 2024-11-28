@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Prop_01</string>
+    <string-array name="theme_options">
+        <item>Tema Claro</item>
+        <item>Tema Oscuro</item>
+    </string-array>
+    <string-array name="theme_values">
+        <item>light</item>
+        <item>dark</item>
+    </string-array>
 </resources>
