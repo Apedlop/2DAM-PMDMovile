@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Estilo personalizado para la categoría -->
+    <style name="PreferenceCategoryRed" parent="Preference.Category">
+        <item name="android:textColor">#FF0000</item> <!-- Color rojo -->
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Estilo personalizado para el título del CheckBoxPreference -->
+    <style name="BoldPreferenceTitle">
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

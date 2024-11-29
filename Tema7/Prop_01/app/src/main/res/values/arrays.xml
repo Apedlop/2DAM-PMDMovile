@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sistemas_operativos">
+        <item>Windows</item>
+        <item>Linux</item>
+        <item>iOS</item>
+    </string-array>
+
+    <string-array name="sistemas_operativos_valores">
+        <item>windows</item>
+        <item>linux</item>
+        <item>ios</item>
+    </string-array>
+</resources>
