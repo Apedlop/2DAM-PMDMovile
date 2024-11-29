@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/botonToastEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="#67FFB4"
+        android:text="Toast EditText"
+        android:textColor="#007157"
+        android:textStyle="bold"
+        app:cornerRadius="0dp" />
+
+    <Button
+        android:id="@+id/botonToastSeekBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="#67F0FF"
+        android:text="Toast EditText"
+        android:textColor="#00717E"
+        android:textStyle="bold"
+        app:cornerRadius="0dp" />
+
+</LinearLayout>
