@@ -1,23 +1,30 @@
 package com.example.gestionmascotas;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -27,11 +34,53 @@ public class ListadoMascotasUser extends AppCompatActivity {
     private Mascota mascotaSeleccionada;
     private ArrayList<Mascota> listaMascotas;
     private EditText fecha;
+    private TextView textoFecha, textoHora;
+    private Button botonFecha, botonHora;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listado_mascotas);
+
+        textoFecha = findViewById(R.id.textoFecha);
+        botonFecha = findViewById(R.id.botonFecha);
+        textoHora = findViewById(R.id.textoHora);
+        botonHora = findViewById(R.id.botonHora);
+
+        // Calendario
+        final Calendar calendario = Calendar.getInstance();
+        int ano = calendario.get(Calendar.YEAR);
+        int mes = calendario.get(Calendar.MONTH);
+        int dia = calendario.get(Calendar.DAY_OF_MONTH);
+
+        // Crear el DatePickerDialog
+        final DatePickerDialog fecha = new DatePickerDialog(ListadoMascotasUser.this, (view, year, month, dayOfMonth) -> {
+            // Formatear la fecha seleccionada
+            String fechaSeleccionada = dayOfMonth + "/" + (month + 1) + "/" + year;
+            textoFecha.setText(fechaSeleccionada); // Mostrar la fecha en el TextView
+        }, ano, mes, dia); // Fecha por defecto (actual)
+
+        botonFecha.setOnClickListener(v -> {
+            Log.d("MainActivity", "BOTON");
+            fecha.show();
+        });
+
+        // Hora
+        final Calendar calendar = Calendar.getInstance();
+        int horas = calendario.get(Calendar.HOUR_OF_DAY);
+        int minutos = calendario.get(Calendar.MINUTE);
+
+        TimePickerDialog hora = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                String horaSeleccionada = hourOfDay + ":" + minute;
+                textoHora.setText(horaSeleccionada);
+            }
+        }, horas, minutos, false);
+
+        botonHora.setOnClickListener(v -> {
+            hora.show();
+        });
 
         // Obtener nombre del usuario
         Intent obtenerUsuario = getIntent();
