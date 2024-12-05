@@ -98,29 +98,46 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        // Cambiar del tema claro al oscuro
         themeToggle = findViewById(R.id.themeToggle);
 
-        // Leer el estado del tema desde SharedPreferences
+// Leer el estado del tema desde SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("ThemePrefs", MODE_PRIVATE);
+        boolean isDarkMode = sharedPreferences.getBoolean("isDarkMode", false);
+
+// Aplicar el tema correcto al iniciar la actividad
+        if (isDarkMode) {
+            setTheme(R.style.GestionMascotas_Dark);  // Aplica el tema oscuro personalizado
+        } else {
+            setTheme(R.style.GestionMascotas);  // Aplica el tema claro personalizado
+        }
+
+// Configura el ícono inicial del botón según el tema actual
+        themeToggle.setImageResource(isDarkMode ? R.drawable.mod_claro : R.drawable.mod_oscuro);
 
         themeToggle.setOnClickListener(v -> {
-            // Cambiar el modo de tema
+            // Cambia entre modo oscuro y claro
             boolean darkMode = (getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES;
 
             if (darkMode) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);  // Modo claro
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);  // Cambia al modo claro
                 themeToggle.setImageResource(R.drawable.mod_oscuro);  // Icono para cambiar a modo oscuro
+                recreate();
             } else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);  // Modo oscuro
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);  // Cambia al modo oscuro
                 themeToggle.setImageResource(R.drawable.mod_claro);  // Icono para cambiar a modo claro
+                recreate();
             }
 
-            // Guardar el nuevo estado en SharedPreferences
+            // Guarda el nuevo estado en SharedPreferences
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putBoolean("isDarkMode", !darkMode);  // Cambiar el valor en SharedPreferences
+            editor.putBoolean("isDarkMode", !darkMode);
             editor.apply();
+
+            // Reinicia la actividad para aplicar el tema actualizado
+            recreate();  // Reinicia la actividad para aplicar el nuevo tema
         });
+
+
 
         // Inicializar la lista de mascotas
         listaMascotas = new ArrayList<>();

@@ -11,20 +11,7 @@
         <item name="android:buttonStyle">?android:attr/buttonStyle</item>
     </style>
 
-    <!-- Tema base para el modo oscuro -->
-    <style name="Base.Theme.GestionMascotas.Dark" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">#4B2C20</item>
-        <item name="colorPrimaryVariant">#6C3F28</item>
-        <item name="colorOnPrimary">#FFFFFF</item>
-        <item name="android:statusBarColor">#4B2C20</item>
-        <item name="android:textColorPrimary">#FFFFFF</item>
-        <item name="android:textColorSecondary">#B0B0B0</item>
-        <item name="android:buttonStyle">?android:attr/buttonStyle</item>
-
-    </style>
-
     <!-- Tema final para la aplicación -->
     <style name="Theme.GestionMascotas" parent="Base.Theme.GestionMascotas" />
 
-    <style name="Theme.GestionMascotas.DarkMode" parent="Base.Theme.GestionMascotas.Dark" />
 </resources>

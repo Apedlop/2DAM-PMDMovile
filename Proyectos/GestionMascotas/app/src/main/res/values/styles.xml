@@ -36,4 +36,27 @@
         <item name="android:textSize">18dp</item>
         <item name="android:text"> </item>
     </style>
+    <!-- Tema base para el modo claro -->
+    <style name="GestionMascotas" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#bd793f</item>
+        <item name="colorPrimaryContainer">#faebda</item> <!-- Fondo principal -->
+        <item name="colorSecondary">#C88C5C</item> <!-- Color secundario -->
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="android:statusBarColor">#bd793f</item>
+        <item name="android:windowBackground">#faebda</item>  <!-- Fondo de la ventana -->
+        <item name="android:textColorPrimary">#000000</item>
+        <item name="android:textColorSecondary">#757575</item>
+    </style>
+
+    <!-- Tema base para el modo oscuro -->
+    <style name="GestionMascotas.Dark" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#4B2C20</item>
+        <item name="colorPrimaryContainer">#2A1A14</item> <!-- Fondo principal oscuro -->
+        <item name="colorSecondary">#6C3F28</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="android:statusBarColor">#4B2C20</item>
+        <item name="android:windowBackground">#2A1A14</item>  <!-- Fondo de la ventana -->
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:textColorSecondary">#B0B0B0</item>
+    </style>
 </resources>

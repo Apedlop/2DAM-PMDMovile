@@ -6,7 +6,7 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
-        android:theme="@style/Theme.GestionMascotas">
+        android:theme="@style/GestionMascotas">
         <activity
             android:name=".AñadirMascota"
             android:exported="false" />
