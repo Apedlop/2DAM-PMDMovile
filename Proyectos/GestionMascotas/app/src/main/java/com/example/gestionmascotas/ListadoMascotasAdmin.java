@@ -1,9 +1,12 @@
 package com.example.gestionmascotas;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -16,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.HeaderViewListAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -23,6 +27,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 
 import java.util.ArrayList;
@@ -37,6 +42,7 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
     private ArrayList<Mascota> listaMascotas;
     private TextView textoFecha, textoHora;
     private Button botonFecha, botonHora;
+    private ImageButton themeToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +97,30 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        // Cambiar del tema claro al oscuro
+        themeToggle = findViewById(R.id.themeToggle);
+
+        // Leer el estado del tema desde SharedPreferences
+        SharedPreferences sharedPreferences = getSharedPreferences("ThemePrefs", MODE_PRIVATE);
+
+        themeToggle.setOnClickListener(v -> {
+            // Cambiar el modo de tema
+            boolean darkMode = (getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES;
+
+            if (darkMode) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);  // Modo claro
+                themeToggle.setImageResource(R.drawable.mod_oscuro);  // Icono para cambiar a modo oscuro
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);  // Modo oscuro
+                themeToggle.setImageResource(R.drawable.mod_claro);  // Icono para cambiar a modo claro
+            }
+
+            // Guardar el nuevo estado en SharedPreferences
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("isDarkMode", !darkMode);  // Cambiar el valor en SharedPreferences
+            editor.apply();
+        });
 
         // Inicializar la lista de mascotas
         listaMascotas = new ArrayList<>();
@@ -163,20 +193,30 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
             startActivityForResult(intent, 1);
             return true;
         } else if (item.getItemId() == R.id.opEliminar) {
-            if (posicion >= 0 && posicion < listaMascotas.size()) {
-                // Eliminar la mascota
-                listaMascotas.remove(posicion);
+            // Crear el cuadro de diálogo de confirmación
+            new AlertDialog.Builder(this) // O usa 'getContext()' si estás en un fragmento
+                    .setTitle("Confirmar eliminación")
+                    .setMessage("¿Estás seguro de que deseas eliminar esta mascota?")
+                    .setPositiveButton("Eliminar", (dialog, which) -> {
+                        // Lógica para eliminar la mascota
+                        if (posicion >= 0 && posicion < listaMascotas.size()) {
+                            listaMascotas.remove(posicion);
 
-                // Obtener el adaptador envuelto y notificar el cambio
-                ((Adaptador) lista.getAdapter()).notifyDataSetChanged();
+                            // Notificar al adaptador que los datos han cambiado
+                            ((Adaptador) lista.getAdapter()).notifyDataSetChanged();
 
-                // Mostrar mensaje de éxito
-                mostrarToast("Mascota eliminada");
-            } else {
-                // Mostrar mensaje de error si la posición no es válida
-                mostrarToast("Error al eliminar la mascota");
-            }
-            return true;
+                            // Mostrar mensaje de éxito
+                            mostrarToast("Mascota eliminada");
+                        } else {
+                            // Mostrar mensaje de error si la posición no es válida
+                            mostrarToast("Error al eliminar la mascota");
+                        }
+                    })
+                    .setNegativeButton("Cancelar", (dialog, which) -> {
+                        // Cerrar el diálogo sin hacer nada
+                        dialog.dismiss();
+                    })
+                    .show();
         }
 
         return super.onContextItemSelected(item);

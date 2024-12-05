@@ -8,36 +8,53 @@
     android:paddingRight="20dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-    <!-- Contenedor de usuario a la izquierda -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/icono_user" />
-
-        <TextView
-            android:id="@+id/nomUsuario"
+        android:orientation="horizontal">
+        <!-- Contenedor de usuario a la izquierda -->
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="User"
-            android:textColor="@color/fondo"
-            android:gravity="center_vertical"/>
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-    <!-- Título centrado -->
-    <TextView
-        android:id="@+id/appTitle"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Gestión de Mascotas"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:textColor="@color/fondo"
-        android:gravity="center"
-        android:layout_gravity="center" />
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/icono_user" />
+
+            <TextView
+                android:id="@+id/nomUsuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="User"
+                android:textColor="@color/fondo" />
+        </LinearLayout>
+
+        <!-- Título centrado -->
+        <TextView
+            android:id="@+id/appTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="Gestión de Mascotas"
+            android:textColor="@color/fondo"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/themeToggle"
+            android:layout_gravity="center"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@color/titulo"
+            android:scaleType="centerCrop"
+            android:src="@drawable/mod_claro" />
+
+    </LinearLayout>
 </androidx.appcompat.widget.Toolbar>

@@ -1,7 +1,10 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.GestionMascotas" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="colorPrimary">#4B2C20</item> <!-- Versión oscura de #bd793f -->
+        <item name="colorPrimaryVariant">#6C3F28</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="android:statusBarColor">#4B2C20</item>
+        <item name="android:windowBackground">#2A1B14</item> <!-- Fondo oscuro -->
     </style>
 </resources>
