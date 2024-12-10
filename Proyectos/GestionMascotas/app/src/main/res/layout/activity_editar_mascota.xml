@@ -34,7 +34,7 @@
                     android:id="@+id/etNombre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Nombre"
+                    android:hint="@string/hint_nombre"
                     android:inputType="text" />
 
                 <!-- EditText para la raza -->
@@ -42,7 +42,7 @@
                     android:id="@+id/etRaza"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Raza"
+                    android:hint="@string/hint_raza"
                     android:inputType="text" />
 
                 <!-- EditText para la edad -->
@@ -50,7 +50,7 @@
                     android:id="@+id/etEdad"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Edad"
+                    android:hint="@string/hint_edad"
                     android:inputType="number" />
 
                 <!-- EditText para el peso -->
@@ -58,21 +58,20 @@
                     android:id="@+id/etPeso"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Peso"
+                    android:hint="@string/hint_peso"
                     android:inputType="numberDecimal" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-                    <!-- AutoCompleteTextView para Tipo de Mascota -->
+                    <!-- Spinner para Tipo de Mascota -->
                     <Spinner
                         android:id="@+id/spinnerTipoMascota"
                         android:layout_width="170dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:hint="Tipo de Mascota" />
-
+                        android:hint="@string/hint_tipo_mascota" />
 
                     <!-- ImageView para mostrar la imagen según el tipo de mascota -->
                     <ImageView
@@ -80,8 +79,8 @@
                         android:layout_width="100dp"
                         android:layout_height="80dp"
                         android:layout_gravity="center"
-                        android:contentDescription="Imagen de la mascota"
-                        android:src="@drawable/imagen_perro" /> <!-- Imagen predeterminada -->
+                        android:contentDescription="@string/descripcion_imagen_mascota"
+                        android:src="@drawable/imagen_perro" />
                 </LinearLayout>
 
                 <TableLayout
@@ -95,7 +94,7 @@
                         android:id="@+id/texto_vacunado"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Vacunado:"
+                        android:text="@string/texto_vacunado"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -110,13 +109,13 @@
                             android:id="@+id/radio_vacunado_si"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Sí" />
+                            android:text="@string/opcion_si" />
 
                         <RadioButton
                             android:id="@+id/radio_vacunado_no"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="No" />
+                            android:text="@string/opcion_no" />
                     </RadioGroup>
 
                     <!-- TextView para Desparacitado -->
@@ -124,7 +123,7 @@
                         android:id="@+id/texto_desparasitado"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Desparasitado:"
+                        android:text="@string/texto_desparasitado"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -139,13 +138,13 @@
                             android:id="@+id/radio_desparasitado_si"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Sí" />
+                            android:text="@string/opcion_si" />
 
                         <RadioButton
                             android:id="@+id/radio_desparasitado_no"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="No" />
+                            android:text="@string/opcion_no" />
                     </RadioGroup>
 
                     <!-- TextView para Esterilizado -->
@@ -153,7 +152,7 @@
                         android:id="@+id/texto_esterilizado"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Esterilizado:"
+                        android:text="@string/texto_esterilizado"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -168,13 +167,13 @@
                             android:id="@+id/radio_esterilizado_si"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Sí" />
+                            android:text="@string/opcion_si" />
 
                         <RadioButton
                             android:id="@+id/radio_esterilizado_no"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="No" />
+                            android:text="@string/opcion_no" />
                     </RadioGroup>
 
                 </TableLayout>
@@ -188,13 +187,13 @@
                 <Button
                     android:id="@+id/btnGuardar"
                     style="@style/botonGuardarEdicion"
-                    android:text="Guardar" />
+                    android:text="@string/boton_guardar" />
 
                 <Button
                     android:id="@+id/btnCancelar"
                     style="@style/botonGuardarEdicion"
                     android:layout_marginLeft="15dp"
-                    android:text="Cancelar" />
+                    android:text="@string/boton_cancelar" />
 
             </LinearLayout>
         </LinearLayout>

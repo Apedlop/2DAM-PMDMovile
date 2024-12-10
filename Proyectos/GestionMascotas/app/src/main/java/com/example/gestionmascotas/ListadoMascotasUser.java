@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,9 +12,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -23,17 +27,19 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Locale;
 
 public class ListadoMascotasUser extends AppCompatActivity {
 
     private ListView lista;
     private Mascota mascotaSeleccionada;
     private ArrayList<Mascota> listaMascotas;
-    private EditText fecha;
     private TextView textoFecha, textoHora;
     private Button botonFecha, botonHora;
 
@@ -41,6 +47,17 @@ public class ListadoMascotasUser extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listado_mascotas);
+
+        mostarAnimacion();
+
+        // Boton flotante
+        FloatingActionButton fab = findViewById(R.id.botonFlotante);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mostrarToast("Solo se puede usar en el modo Admin.");
+            }
+        });
 
         textoFecha = findViewById(R.id.textoFecha);
         botonFecha = findViewById(R.id.botonFecha);
@@ -53,27 +70,28 @@ public class ListadoMascotasUser extends AppCompatActivity {
         int mes = calendario.get(Calendar.MONTH);
         int dia = calendario.get(Calendar.DAY_OF_MONTH);
 
-        // Crear el DatePickerDialog
-        final DatePickerDialog fecha = new DatePickerDialog(ListadoMascotasUser.this, (view, year, month, dayOfMonth) -> {
+        // Crear el DatePickerDialog con el estilo personalizado
+        final DatePickerDialog fecha = new DatePickerDialog(ListadoMascotasUser.this, R.style.CustomDatePickerDialog, (view, year, month, dayOfMonth) -> {
             // Formatear la fecha seleccionada
             String fechaSeleccionada = dayOfMonth + "/" + (month + 1) + "/" + year;
             textoFecha.setText(fechaSeleccionada); // Mostrar la fecha en el TextView
         }, ano, mes, dia); // Fecha por defecto (actual)
 
         botonFecha.setOnClickListener(v -> {
-            Log.d("MainActivity", "BOTON");
             fecha.show();
         });
 
         // Hora
         final Calendar calendar = Calendar.getInstance();
-        int horas = calendario.get(Calendar.HOUR_OF_DAY);
-        int minutos = calendario.get(Calendar.MINUTE);
+        int horas = calendar.get(Calendar.HOUR_OF_DAY);
+        int minutos = calendar.get(Calendar.MINUTE);
 
-        TimePickerDialog hora = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
+        // Crear el TimePickerDialog con el estilo personalizado
+        TimePickerDialog hora = new TimePickerDialog(this, R.style.CustomTimePicker, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                String horaSeleccionada = hourOfDay + ":" + minute;
+                // Formatear la hora y los minutos para que siempre tengan dos dígitos
+                String horaSeleccionada = String.format("%02d:%02d", hourOfDay, minute);
                 textoHora.setText(horaSeleccionada);
             }
         }, horas, minutos, false);
@@ -161,7 +179,6 @@ public class ListadoMascotasUser extends AppCompatActivity {
             ((Adaptador) lista.getAdapter()).notifyDataSetChanged();
             mostrarToast("Lista ordenada por nombre");
             return true;
-
         } else if (item.getItemId() == R.id.ordenarRaza) {
             // Ordenar por raza
             Collections.sort(listaMascotas, new Comparator<Mascota>() {
@@ -174,10 +191,58 @@ public class ListadoMascotasUser extends AppCompatActivity {
             ((Adaptador) lista.getAdapter()).notifyDataSetChanged();
             mostrarToast("Lista ordenada por raza");
             return true;
+        } else if (item.getItemId() == R.id.idioma_es) {
+            // Cambiar idioma a español
+            cambiarIdioma("es");
+            mostrarToast("Idioma cambiado a Español");
+            return true;
+        } else if (item.getItemId() == R.id.idioma_en) {
+            // Cambiar idioma a inglés
+            cambiarIdioma("en");
+            mostrarToast("Idioma cambiado a Inglés");
+            return true;
+        } else if (item.getItemId() == R.id.idioma_fr) {
+            // Cambiar idioma a francés
+            cambiarIdioma("fr");
+            mostrarToast("Idioma cambiado a Francés");
+            return true;
         }
 
         // Si no es ninguna de las anteriores opciones, delega el resto a la implementación por defecto
         return super.onOptionsItemSelected(item);
+    }
+
+    private void cambiarIdioma(String idioma) {
+        Locale locale;
+        switch (idioma) {
+            case "es":
+                locale = new Locale("es"); // Español
+                break;
+            case "en":
+                locale = new Locale("en"); // Inglés
+                break;
+            case "fr":
+                locale = new Locale("fr"); // Francés
+                break;
+            default:
+                locale = Locale.getDefault(); // Por defecto
+                break;
+        }
+
+        // Cambiar la configuración de la aplicación a la nueva localidad
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.setLocale(locale);  // Usa setLocale en lugar de config.locale = locale
+        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+
+        recreate(); // Esto recrea la actividad actual con la configuración de idioma cambiada
+    }
+
+    // Método para mostrar animación
+    public void mostarAnimacion() {
+        FrameLayout listadoMascotas = findViewById(R.id.listadoMascotas);
+        Animation animacion = AnimationUtils.loadAnimation(this, R.anim.aparecer);
+        listadoMascotas.startAnimation(animacion);
     }
 
     // Método para mostrar toast

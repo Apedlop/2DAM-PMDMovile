@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 public class Mascota implements Serializable {
 
-    private int id;  // Atributo id único
     private String nombre;
     private String raza;
     private int imagen;
@@ -16,7 +15,6 @@ public class Mascota implements Serializable {
     private static int idCounter = 0;  // Contador estático para generar IDs únicos
 
     public Mascota(String nombre, String raza, int imagen, int edad, float peso, boolean vacunada, boolean desparacitada, boolean esterilizada) {
-        this.id = ++idCounter;  // Asigna un ID único autoincremental
         this.nombre = nombre;
         this.raza = raza;
         this.imagen = imagen;
@@ -28,7 +26,6 @@ public class Mascota implements Serializable {
     }
 
     public Mascota(String nombre, String raza, int edad, float peso, boolean vacunada, boolean desparacitada, boolean esterilizada) {
-        this.id = ++idCounter;  // Asigna un ID único autoincremental
         this.nombre = nombre;
         this.raza = raza;
         this.edad = edad;
@@ -39,15 +36,6 @@ public class Mascota implements Serializable {
     }
 
     // Métodos getter y setter para cada propiedad
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getNombre() {
         return nombre;
     }
@@ -110,20 +98,5 @@ public class Mascota implements Serializable {
 
     public void setEsterilizada(boolean esterilizada) {
         this.esterilizada = esterilizada;
-    }
-
-    @Override
-    public String toString() {
-        return "Mascota{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", raza='" + raza + '\'' +
-                ", imagen=" + imagen +
-                ", edad=" + edad +
-                ", peso=" + peso +
-                ", vacunada=" + vacunada +
-                ", desparacitada=" + desparacitada +
-                ", esterilizada=" + esterilizada +
-                '}';
     }
 }

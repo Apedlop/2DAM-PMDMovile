@@ -1,63 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="@color/fondo">
+    android:layout_margin="16dp"
+    android:elevation="4dp"
+    app:cardCornerRadius="8dp">
 
+    <!-- Contenedor principal de la mascota -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:background="@color/titulo"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        android:padding="16dp">
 
-        <ImageView
-            android:id="@+id/imagen"
-            android:layout_width="match_parent"
-            android:layout_height="125dp"
-            android:src="@drawable/imagen_perro"
-            android:contentDescription="Imagen de mascota" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/nombre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nombre"
-            android:textColor="@color/titulo"
-            android:textSize="25sp"
-            android:textStyle="bold" />
-
+        <!-- Contenedor con borde para la imagen (marco) -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:background="@drawable/marco_imagen"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="5dp">
 
+            <!-- Imagen de la mascota -->
+            <ImageView
+                android:id="@+id/imagen"
+                android:layout_width="75dp"
+                android:layout_height="100dp"
+                android:contentDescription="@string/descripcion_imagen_mascota"
+                android:scaleType="centerCrop"
+                android:src="@drawable/imagen_perro" />
+        </LinearLayout>
+
+        <!-- Información de la mascota -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+            <!-- Nombre de la mascota -->
             <TextView
-                android:id="@+id/edad"
+                android:id="@+id/nombre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:text="Edad" />
+                android:text="@string/nombre_mascota"
+                android:textColor="@color/fondo"
+                android:textSize="25sp"
+                android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/raza"
+            <!-- Edad y raza de la mascota -->
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:text="Raza"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical">
+
+                <!-- Edad -->
+                <TextView
+                    android:id="@+id/edad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/edad_mascota"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <!-- Raza -->
+                <TextView
+                    android:id="@+id/raza"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/raza_mascota"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+</androidx.cardview.widget.CardView>

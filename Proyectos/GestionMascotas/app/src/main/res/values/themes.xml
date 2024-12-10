@@ -10,8 +10,4 @@
         <item name="android:textColorSecondary">#757575</item>
         <item name="android:buttonStyle">?android:attr/buttonStyle</item>
     </style>
-
-    <!-- Tema final para la aplicación -->
-    <style name="Theme.GestionMascotas" parent="Base.Theme.GestionMascotas" />
-
 </resources>

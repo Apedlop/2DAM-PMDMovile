@@ -16,8 +16,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.HeaderViewListAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -30,10 +33,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Locale;
 
 public class ListadoMascotasAdmin extends AppCompatActivity {
 
@@ -42,12 +49,22 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
     private ArrayList<Mascota> listaMascotas;
     private TextView textoFecha, textoHora;
     private Button botonFecha, botonHora;
-    private ImageButton themeToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listado_mascotas);
+
+        mostarAnimacion();
+        // Boton flotante
+        FloatingActionButton fab = findViewById(R.id.botonFlotante);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ListadoMascotasAdmin.this, AñadirMascota.class);
+                startActivityForResult(intent, 2);
+            }
+        });
 
         textoFecha = findViewById(R.id.textoFecha);
         botonFecha = findViewById(R.id.botonFecha);
@@ -60,27 +77,28 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
         int mes = calendario.get(Calendar.MONTH);
         int dia = calendario.get(Calendar.DAY_OF_MONTH);
 
-        // Crear el DatePickerDialog
-        final DatePickerDialog fecha = new DatePickerDialog(ListadoMascotasAdmin.this, (view, year, month, dayOfMonth) -> {
+        // Crear el DatePickerDialog con el estilo personalizado
+        final DatePickerDialog fecha = new DatePickerDialog(ListadoMascotasAdmin.this, R.style.CustomDatePickerDialog, (view, year, month, dayOfMonth) -> {
             // Formatear la fecha seleccionada
             String fechaSeleccionada = dayOfMonth + "/" + (month + 1) + "/" + year;
             textoFecha.setText(fechaSeleccionada); // Mostrar la fecha en el TextView
         }, ano, mes, dia); // Fecha por defecto (actual)
 
         botonFecha.setOnClickListener(v -> {
-            Log.d("MainActivity", "BOTON");
             fecha.show();
         });
 
         // Hora
         final Calendar calendar = Calendar.getInstance();
-        int horas = calendario.get(Calendar.HOUR_OF_DAY);
-        int minutos = calendario.get(Calendar.MINUTE);
+        int horas = calendar.get(Calendar.HOUR_OF_DAY);
+        int minutos = calendar.get(Calendar.MINUTE);
 
-        TimePickerDialog hora = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
+        // Crear el TimePickerDialog con el estilo personalizado
+        TimePickerDialog hora = new TimePickerDialog(this, R.style.CustomTimePicker, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                String horaSeleccionada = hourOfDay + ":" + minute;
+                // Formatear la hora y los minutos para que siempre tengan dos dígitos
+                String horaSeleccionada = String.format("%02d:%02d", hourOfDay, minute);
                 textoHora.setText(horaSeleccionada);
             }
         }, horas, minutos, false);
@@ -96,48 +114,6 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
         // Añadir menu personalizado
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-
-        themeToggle = findViewById(R.id.themeToggle);
-
-// Leer el estado del tema desde SharedPreferences
-        SharedPreferences sharedPreferences = getSharedPreferences("ThemePrefs", MODE_PRIVATE);
-        boolean isDarkMode = sharedPreferences.getBoolean("isDarkMode", false);
-
-// Aplicar el tema correcto al iniciar la actividad
-        if (isDarkMode) {
-            setTheme(R.style.GestionMascotas_Dark);  // Aplica el tema oscuro personalizado
-        } else {
-            setTheme(R.style.GestionMascotas);  // Aplica el tema claro personalizado
-        }
-
-// Configura el ícono inicial del botón según el tema actual
-        themeToggle.setImageResource(isDarkMode ? R.drawable.mod_claro : R.drawable.mod_oscuro);
-
-        themeToggle.setOnClickListener(v -> {
-            // Cambia entre modo oscuro y claro
-            boolean darkMode = (getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES;
-
-            if (darkMode) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);  // Cambia al modo claro
-                themeToggle.setImageResource(R.drawable.mod_oscuro);  // Icono para cambiar a modo oscuro
-                recreate();
-            } else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);  // Cambia al modo oscuro
-                themeToggle.setImageResource(R.drawable.mod_claro);  // Icono para cambiar a modo claro
-                recreate();
-            }
-
-            // Guarda el nuevo estado en SharedPreferences
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putBoolean("isDarkMode", !darkMode);
-            editor.apply();
-
-            // Reinicia la actividad para aplicar el tema actualizado
-            recreate();  // Reinicia la actividad para aplicar el nuevo tema
-        });
-
-
 
         // Inicializar la lista de mascotas
         listaMascotas = new ArrayList<>();
@@ -307,14 +283,58 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
             ((Adaptador) lista.getAdapter()).notifyDataSetChanged();
             mostrarToast("Lista ordenada por raza");
             return true;
-        } else if (item.getItemId() == R.id.añadirMascota) {
-            // Añadir una mascota nueva
-            Intent intent = new Intent(this, AñadirMascota.class);
-            startActivityForResult(intent, 2);
+        } else if (item.getItemId() == R.id.idioma_es) {
+            // Cambiar idioma a español
+            cambiarIdioma("es");
+            mostrarToast("Idioma cambiado a Español");
+            return true;
+        } else if (item.getItemId() == R.id.idioma_en) {
+            // Cambiar idioma a inglés
+            cambiarIdioma("en");
+            mostrarToast("Idioma cambiado a Inglés");
+            return true;
+        } else if (item.getItemId() == R.id.idioma_fr) {
+            // Cambiar idioma a francés
+            cambiarIdioma("fr");
+            mostrarToast("Idioma cambiado a Francés");
+            return true;
         }
 
         // Si no es ninguna de las anteriores opciones, delega el resto a la implementación por defecto
         return super.onOptionsItemSelected(item);
+    }
+
+    private void cambiarIdioma(String idioma) {
+        Locale locale;
+        switch (idioma) {
+            case "es":
+                locale = new Locale("es"); // Español
+                break;
+            case "en":
+                locale = new Locale("en"); // Inglés
+                break;
+            case "fr":
+                locale = new Locale("fr"); // Francés
+                break;
+            default:
+                locale = Locale.getDefault(); // Por defecto
+                break;
+        }
+
+        // Cambiar la configuración de la aplicación a la nueva localidad
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.setLocale(locale);  // Usa setLocale en lugar de config.locale = locale
+        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+
+        recreate(); // Esto recrea la actividad actual con la configuración de idioma cambiada
+    }
+
+    // Método para mostrar animación
+    public void mostarAnimacion() {
+        FrameLayout listadoMascotas = findViewById(R.id.listadoMascotas);
+        Animation animacion = AnimationUtils.loadAnimation(this, R.anim.aparecer);
+        listadoMascotas.startAnimation(animacion);
     }
 
     // Método para mostrar toast

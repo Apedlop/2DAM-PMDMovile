@@ -9,8 +9,7 @@
     android:orientation="vertical"
     tools:context=".InfoDetallada">
 
-
-
+    <!-- Contenedor para la imagen de la mascota -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,12 +19,13 @@
 
         <ImageView
             android:id="@+id/imagen_mascota"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="250dp"
             android:src="@drawable/imagen_perro" />
 
     </LinearLayout>
 
+    <!-- Información general de la mascota -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -37,16 +37,17 @@
             android:id="@+id/texto_nombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nombre"
+            android:text="@string/nombre_mascota"
             android:textColor="@color/titulo"
-            android:textSize="25dp"
+            android:textSize="25sp"
             android:textStyle="bold" />
 
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:columnCount="3">
+            android:columnCount="3"
+            android:orientation="horizontal">
 
             <ImageView
                 style="@style/imagen"
@@ -58,8 +59,7 @@
                 android:id="@+id/texto_edad"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:text="Edad: "
+                android:text="@string/edad"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -67,10 +67,8 @@
                 android:id="@+id/edad_valor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_marginLeft="10dp"
                 android:text="5 años"
-                android:textSize="18dp" />
+                android:textSize="18sp" />
 
             <ImageView
                 style="@style/imagen"
@@ -82,8 +80,7 @@
                 android:id="@+id/texto_raza"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:text="Raza: "
+                android:text="@string/raza"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -91,10 +88,8 @@
                 android:id="@+id/raza_valor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_marginLeft="10dp"
                 android:text="Bodeguero"
-                android:textSize="18dp" />
+                android:textSize="18sp" />
 
             <ImageView
                 style="@style/imagen"
@@ -106,8 +101,7 @@
                 android:id="@+id/texto_peso"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:text="Peso: "
+                android:text="@string/peso"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -115,12 +109,11 @@
                 android:id="@+id/peso_valor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_marginLeft="10dp"
                 android:text="25 kg"
-                android:textSize="18dp" />
+                android:textSize="18sp" />
         </GridLayout>
 
+        <!-- Detalles adicionales -->
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -130,7 +123,7 @@
                 android:id="@+id/texto_vacunado"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Vacunado:"
+                android:text="@string/vacunado"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -144,20 +137,20 @@
                     android:id="@+id/radio_vacunado_si"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sí" />
+                    android:text="@string/si" />
 
                 <RadioButton
                     android:id="@+id/radio_vacunado_no"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="No" />
+                    android:text="@string/no" />
             </RadioGroup>
 
             <TextView
                 android:id="@+id/texto_desparasitado"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Desparasitado:"
+                android:text="@string/desparasitado"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -171,20 +164,20 @@
                     android:id="@+id/radio_desparasitado_si"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sí" />
+                    android:text="@string/si" />
 
                 <RadioButton
                     android:id="@+id/radio_desparasitado_no"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="No" />
+                    android:text="@string/no" />
             </RadioGroup>
 
             <TextView
                 android:id="@+id/texto_esterilizado"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Esterilizado:"
+                android:text="@string/esterilizado"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -198,13 +191,13 @@
                     android:id="@+id/radio_esterilizado_si"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sí" />
+                    android:text="@string/si" />
 
                 <RadioButton
                     android:id="@+id/radio_esterilizado_no"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="No" />
+                    android:text="@string/no" />
             </RadioGroup>
         </TableLayout>
 
