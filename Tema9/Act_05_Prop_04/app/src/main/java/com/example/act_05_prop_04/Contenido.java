@@ -32,4 +32,16 @@ public class Contenido {
         ENT_LISTA_HASHMAP.put(entrada.id, entrada);
     }
 
+    static {
+        // Inicialización automática de datos
+        ponerEntrada(new Lista_entrada("0", R.drawable.ima1, "DONUTS", "Descripción de DONUTS"));
+        ponerEntrada(new Lista_entrada("1", R.drawable.ima2, "FROYO", "Descripción de FROYO"));
+        ponerEntrada(new Lista_entrada("2", R.drawable.ima3, "GINGERBREAD", "Descripción de GINGERBREAD"));
+        ponerEntrada(new Lista_entrada("3", R.drawable.ima4, "HONEYCOMB", "Descripción de HONEYCOMB"));
+        ponerEntrada(new Lista_entrada("4", R.drawable.ima5, "ICE CREAM", "Descripción de ICE CREAM"));
+        ponerEntrada(new Lista_entrada("5", R.drawable.ima6, "JELLY BEAN", "Descripción de JELLY BEAN"));
+        ponerEntrada(new Lista_entrada("6", R.drawable.ima7, "KITKAT", "Descripción de KITKAT"));
+        ponerEntrada(new Lista_entrada("7", R.drawable.ima8, "LOLLIPOP", "Descripción de LOLLIPOP"));
+    }
+
 }
