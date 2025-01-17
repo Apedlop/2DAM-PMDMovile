@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="imagen">
+        <item name="android:layout_width">24dp</item>
+        <item name="android:layout_height">24dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:gravity">center_vertical|start</item>
+    </style>
+
+    <style name="botonInicio">
+        <item name="cornerRadius">0dp</item>
+        <item name="android:backgroundTint">@color/fondo</item>
+        <item name="android:textColor">@color/titulo</item>
+    </style>
+
+    <style name="botonGuardarEdicion">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:textColor">@color/fondo</item>
+        <item name="android:backgroundTint">@color/titulo</item>
+        <item name="android:textSize">18dp</item>
+        <item name="cornerRadius">0dp</item>
+        <item name="android:layout_marginBottom">15dp</item>
+    </style>
+
+    <style name="botonesDateTime">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:backgroundTint">@color/titulo</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">0dp</item>
+    </style>
+
+    <style name="textoDateTime">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:text"></item>
+    </style>
+    <!-- Tema base para el modo claro y oscuro -->
+    <style name="GestionMascotas" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Colores comunes para todos los modos -->
+        <item name="colorPrimary">#bd793f</item>  <!-- Color principal -->
+        <item name="colorPrimaryVariant">@color/fondo</item>  <!-- Variante del color principal -->
+        <item name="colorOnPrimary">#bd793f</item>  <!-- Color del texto sobre el color primario -->
+        <item name="android:statusBarColor">#bd793f</item>  <!-- Color de la barra de estado -->
+        <item name="android:windowBackground">#bd793f</item>  <!-- Fondo de la ventana -->
+
+        <!-- Colores de texto, asegurando que siempre sean negros -->
+        <item name="android:textColorPrimary">#000000</item> <!-- Texto principal (negro) -->
+        <item name="android:textColorSecondary">#757575</item> <!-- Texto secundario -->
+    </style>
+
+
+    <!-- Tema para el modo oscuro -->
+    <style name="GestionMascotas.Dark" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#4B2C20</item>
+        <item name="colorPrimaryVariant">#2A1A14</item>
+        <item name="colorSecondary">#6C3F28</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="android:statusBarColor">#4B2C20</item>
+        <item name="android:windowBackground">#2A1A14</item> <!-- Fondo oscuro -->
+
+        <!-- Colores de texto en modo oscuro, asegurando que el texto sea siempre negro -->
+        <item name="android:textColorPrimary">#000000</item> <!-- Texto principal en negro -->
+        <item name="android:textColorSecondary">#757575</item> <!-- Texto secundario -->
+    </style>
+
+    <style name="CustomDatePickerDialog" parent="Theme.MaterialComponents.DayNight.Dialog">
+        <!-- Color de los textos -->
+        <item name="android:textColorPrimary">@color/fondo</item> <!-- Color principal de texto -->
+        <item name="android:textColorSecondary">#76564C</item> <!-- Color del texto secundario (sin cambio) -->
+
+        <!-- Color de los elementos seleccionables -->
+        <item name="android:colorAccent">@color/fondo</item> <!-- Color de los elementos interactivos  -->
+
+        <!-- Colores de los elementos de selección -->
+        <item name="android:colorControlNormal">@color/fondo</item> <!-- Color de los controles normales  -->
+        <item name="android:colorControlActivated">#76564C</item> <!-- Color de los controles activados (antes marrón claro) -->
+        <item name="android:colorButtonNormal">@color/fondo</item> <!-- Color de los botones (antes marrón claro) -->
+
+        <!-- Colores del fondo y líneas -->
+        <item name="android:background">#bd793f</item> <!-- Fondo de la ventana del DatePickerDialog (antes @color/fondo) -->
+        <item name="android:divider">#76564C</item> <!-- Color del divisor (sin cambio) -->
+        <item name="android:windowBackground">#bd793f</item> <!-- Fondo de la ventana (antes @color/fondo) -->
+    </style>
+
+
+    <style name="CustomTimePicker" parent="Theme.MaterialComponents.DayNight.Dialog">
+        <!-- Color de los textos -->
+        <item name="android:textColorPrimary">#bd793f</item>  <!-- Color principal del texto (marrón claro) -->
+        <item name="android:textColorSecondary">#bd793f</item>  <!-- Color del texto secundario (marrón oscuro) -->
+
+        <!-- Color de los elementos seleccionables -->
+        <item name="android:colorAccent">#bd793f</item>  <!-- Color de los elementos interactivos (botones, etc.) -->
+
+        <!-- Colores de las agujas y los controles -->
+        <item name="android:colorControlNormal">#bd793f</item>  <!-- Color de los controles normales -->
+        <item name="android:colorControlActivated">#bd793f</item>  <!-- Color de los controles activados (aguja) -->
+        <item name="android:colorButtonNormal">#bd793f</item>  <!-- Color de los botones -->
+
+        <!-- Fondo y líneas -->
+        <item name="android:divider">#76564C</item>  <!-- Color de los divisores -->
+        <item name="android:windowBackground">#bd793f</item>  <!-- Fondo de la ventana del TimePickerDialog -->
+
+        <!-- Establecer un fondo diferente para los botones de aceptar y cancelar -->
+        <item name="android:buttonStyle">@style/CustomTimePickerButtons</item>  <!-- Estilo de botones -->
+    </style>
+
+    <!-- Estilo para los botones de aceptar y cancelar -->
+    <style name="CustomTimePickerButtons">
+        <item name="android:background">#C88C5C</item>  <!-- Fondo de los botones (diferente del fondo del diálogo) -->
+        <item name="android:textColor">@color/fondo</item>  <!-- Texto blanco en los botones -->
+    </style>
+
+</resources>

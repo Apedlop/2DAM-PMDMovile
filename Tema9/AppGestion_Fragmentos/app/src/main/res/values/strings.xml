@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Gestión Mascotas</string>
+
+    <!-- Botones y textos -->
+    <string name="fecha">Fecha</string>
+    <string name="hora">Hora</string>
+    <string name="añadir_mascota">Añadir nueva mascota</string>
+
+    <!-- Descripción de elementos -->
+    <string name="content_description_add_mascota">Añadir nueva mascota</string>
+
+    <!-- Título de la aplicación -->
+    <string name="app_title">Gestión de Mascotas</string>
+
+    <!-- Nombre de usuario -->
+    <string name="user">User</string>
+
+    <!-- Nombre de la mascota -->
+    <string name="nombre_mascota">Nombre</string>
+
+    <!-- Edad de la mascota -->
+    <string name="edad_mascota">Edad</string>
+
+    <!-- Raza de la mascota -->
+    <string name="raza_mascota">Raza</string>
+
+    <!-- Descripción de la imagen de la mascota -->
+    <string name="descripcion_imagen_mascota">Imagen de mascota</string>
+
+    <!-- Textos para los EditTexts -->
+    <string name="hint_nombre">Nombre</string>
+    <string name="hint_raza">Raza</string>
+    <string name="hint_edad">Edad</string>
+    <string name="hint_peso">Peso</string>
+    <string name="hint_tipo_mascota">Tipo de Mascota</string>
+
+    <!-- Textos para las opciones -->
+    <string name="texto_vacunado">Vacunado:</string>
+    <string name="texto_desparasitado">Desparasitado:</string>
+    <string name="texto_esterilizado">Esterilizado:</string>
+    <string name="opcion_si">Sí</string>
+    <string name="opcion_no">No</string>
+
+    <!-- Botones -->
+    <string name="boton_guardar">Guardar</string>
+    <string name="boton_cancelar">Cancelar</string>
+
+    <!-- Cadenas para la información detallada de la mascota -->
+    <string name="edad">Edad: </string>
+    <string name="raza">Raza: </string>
+    <string name="peso">Peso: </string>
+    <string name="vacunado">Vacunado: </string>
+    <string name="desparasitado">Desparasitado: </string>
+    <string name="esterilizado">Esterilizado: </string>
+    <string name="si">Sí</string>
+    <string name="no">No</string>
+
+    <!-- Opciones de menú -->
+    <string name="ordenar_por_nombre">Ordenar por Nombre</string>
+    <string name="ordenar_por_raza">Ordenar por Raza</string>
+    <string name="seleccionar_idioma">Seleccionar idioma</string>
+    <string name="idioma_espanol">Español</string>
+    <string name="idioma_ingles">Inglés</string>
+    <string name="idioma_frances">Francés</string>
+
+    <string name="editar">Editar</string>
+    <string name="eliminar">Eliminar</string>
+
+</resources>

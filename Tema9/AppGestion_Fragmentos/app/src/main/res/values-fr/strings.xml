@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Gestion des animaux</string>
+
+    <!-- Boutons et textes -->
+    <string name="fecha">Date</string>
+    <string name="hora">Heure</string>
+    <string name="añadir_mascota">Ajouter un nouvel animal</string>
+
+    <!-- Description des éléments -->
+    <string name="content_description_add_mascota">Ajouter un nouvel animal</string>
+
+    <!-- Titre de l'application -->
+    <string name="app_title">Gestion des animaux</string>
+
+    <!-- Nom d'utilisateur -->
+    <string name="user">Utilisateur</string>
+
+    <!-- Nom de l'animal -->
+    <string name="nombre_mascota">Nom</string>
+
+    <!-- Âge de l'animal -->
+    <string name="edad_mascota">Âge</string>
+
+    <!-- Race de l'animal -->
+    <string name="raza_mascota">Race</string>
+
+    <!-- Description de l'image de l'animal -->
+    <string name="descripcion_imagen_mascota">Image de l animal</string>
+
+    <!-- Textes pour les EditTexts -->
+    <string name="hint_nombre">Nom</string>
+    <string name="hint_raza">Race</string>
+    <string name="hint_edad">Âge</string>
+    <string name="hint_peso">Poids</string>
+    <string name="hint_tipo_mascota">Type d animal</string>
+
+    <!-- Textes pour les options -->
+    <string name="texto_vacunado">Vacciné :</string>
+    <string name="texto_desparasitado">Dewormed :</string>
+    <string name="texto_esterilizado">Stérilisé :</string>
+    <string name="opcion_si">Oui</string>
+    <string name="opcion_no">Non</string>
+
+    <!-- Boutons -->
+    <string name="boton_guardar">Enregistrer</string>
+    <string name="boton_cancelar">Annuler</string>
+
+    <!-- Informations détaillées sur l'animal -->
+    <string name="edad">Âge : </string>
+    <string name="raza">Race : </string>
+    <string name="peso">Poids : </string>
+    <string name="vacunado">Vacciné : </string>
+    <string name="desparasitado">Dewormed : </string>
+    <string name="esterilizado">Stérilisé : </string>
+    <string name="si">Oui</string>
+    <string name="no">Non</string>
+
+    <string name="ordenar_por_nombre">Trier par nom</string>
+    <string name="ordenar_por_raza">Trier par race</string>
+    <string name="seleccionar_idioma">Sélectionner la langue</string>
+    <string name="idioma_espanol">Espagnol</string>
+    <string name="idioma_ingles">Anglais</string>
+    <string name="idioma_frances">Français</string>
+
+    <string name="editar">Éditer</string>
+    <string name="eliminar">Supprimer</string>
+</resources>
