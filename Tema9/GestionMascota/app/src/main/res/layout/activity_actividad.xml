@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/listadoMascotas"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo">
+
+    <!-- Contenedor principal para la vista -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="16dp">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/menu_personalizado" />
+
+        <!-- Contenedor con los botones Fecha y Hora -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <!-- Botón para Fecha -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="40dp"
+                android:gravity="center"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/botonFecha"
+                    style="@style/botonesDateTime"
+                    android:text="@string/fecha" />
+                <TextView
+                    android:id="@+id/textoFecha"
+                    style="@style/textoDateTime" />
+            </LinearLayout>
+
+            <!-- Botón para Hora -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/botonHora"
+                    style="@style/botonesDateTime"
+                    android:text="@string/hora" />
+                <TextView
+                    android:id="@+id/textoHora"
+                    style="@style/textoDateTime" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Contenedor de la lista -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Fragmento incluido dentro del FrameLayout -->
+            <fragment
+                android:id="@+id/fragment_listado"
+                android:name="com.example.gestionmascota.Fragmento1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                tools:ignore="Instantiatable" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- FloatingActionButton fijo en la esquina inferior derecha -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/botonFlotante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="16dp"
+        android:contentDescription="@string/content_description_add_mascota"
+        android:src="@drawable/crear"
+        app:backgroundTint="#76564C"
+        app:tint="@android:color/white" />
+
+</FrameLayout>
