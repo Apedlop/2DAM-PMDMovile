@@ -28,11 +28,11 @@
 
             <!-- Imagen de la mascota -->
             <ImageView
-                android:id="@+id/imagen"
+                android:id="@+id/imagenLista"
                 android:layout_width="75dp"
                 android:layout_height="100dp"
                 android:contentDescription="@string/descripcion_imagen_mascota"
-                android:scaleType="centerCrop"
+                android:scaleType="fitXY"
                 android:src="@drawable/imagen_perro" />
         </LinearLayout>
 
@@ -45,7 +45,7 @@
 
             <!-- Nombre de la mascota -->
             <TextView
-                android:id="@+id/nombre"
+                android:id="@+id/textoTitulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/nombre_mascota"
@@ -62,7 +62,7 @@
 
                 <!-- Edad -->
                 <TextView
-                    android:id="@+id/edad"
+                    android:id="@+id/textoEdad"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -73,7 +73,7 @@
 
                 <!-- Raza -->
                 <TextView
-                    android:id="@+id/raza"
+                    android:id="@+id/textoRaza"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"

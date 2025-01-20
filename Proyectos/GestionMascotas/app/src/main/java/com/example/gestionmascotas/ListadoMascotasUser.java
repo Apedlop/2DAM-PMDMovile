@@ -35,18 +35,23 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Locale;
 
-public class ListadoMascotasUser extends AppCompatActivity {
+public class ListadoMascotasUser extends AppCompatActivity implements Fragmento1.Callbacks {
 
     private ListView lista;
     private Mascota mascotaSeleccionada;
     private ArrayList<Mascota> listaMascotas;
     private TextView textoFecha, textoHora;
     private Button botonFecha, botonHora;
+    private boolean dosFragmentos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listado_mascotas);
+
+        if (findViewById(R.id.frame_contenedor) != null) {
+            dosFragmentos = true;
+        }
 
         mostarAnimacion();
 
@@ -111,7 +116,7 @@ public class ListadoMascotasUser extends AppCompatActivity {
 
         // Inicializar la lista de mascotas
         listaMascotas = new ArrayList<>();
-        lista = findViewById(R.id.lista);
+        lista = findViewById(R.id.fragment_listado);
 
         // Cambiar nombre del usuario
         TextView nomUsuario = findViewById(R.id.nomUsuario);
@@ -126,10 +131,10 @@ public class ListadoMascotasUser extends AppCompatActivity {
             @Override
             public void onEntrada(Object entrada, View view) {
                 if (entrada != null && view != null) {
-                    TextView nombre = view.findViewById(R.id.nombre);
-                    TextView edad = view.findViewById(R.id.edad);
-                    TextView raza = view.findViewById(R.id.raza);
-                    ImageView imagen = view.findViewById(R.id.imagen);
+                    TextView nombre = view.findViewById(R.id.textoTitulo);
+                    TextView edad = view.findViewById(R.id.textoEdad);
+                    TextView raza = view.findViewById(R.id.textoRaza);
+                    ImageView imagen = view.findViewById(R.id.imagenLista);
 
                     if (nombre != null && edad != null && raza != null && imagen != null) {
                         Mascota mascota = (Mascota) entrada;
@@ -155,6 +160,21 @@ public class ListadoMascotasUser extends AppCompatActivity {
 
             startActivity(intent);
         });
+    }
+
+    @Override
+    public void onEntradaSeleccionada(String id) {
+        if (dosFragmentos) {
+            Bundle arguments = new Bundle();
+            arguments.putString(Fragmento3.ARG_ID_ENTRADA_SELECCIONADA, id);
+            Fragmento3 fragment = new Fragmento3();
+            fragment.setArguments(arguments);
+            getSupportFragmentManager().beginTransaction().replace(R.id.frame_contenedor, fragment).commit();
+        } else {
+            Intent detalleIntent = new Intent(this, Fragmento2.class);
+            detalleIntent.putExtra(Fragmento3.ARG_ID_ENTRADA_SELECCIONADA, id);
+            startActivity(detalleIntent);
+        }
     }
 
     @Override
