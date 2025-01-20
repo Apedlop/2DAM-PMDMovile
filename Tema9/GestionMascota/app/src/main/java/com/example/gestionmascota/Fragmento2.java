@@ -1,12 +1,8 @@
 package com.example.gestionmascota;
 
+
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentActivity;
 
 public class Fragmento2 extends FragmentActivity {
@@ -24,4 +20,5 @@ public class Fragmento2 extends FragmentActivity {
             getSupportFragmentManager().beginTransaction().add(R.id.frame_contenedor, fragment).commit();
         }
     }
+
 }

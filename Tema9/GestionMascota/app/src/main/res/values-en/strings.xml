@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pet Management</string>
+
+    <!-- Buttons and text -->
+    <string name="fecha">Date</string>
+    <string name="hora">Time</string>
+    <string name="añadir_mascota">Add new pet</string>
+
+    <!-- Description of elements -->
+    <string name="content_description_add_mascota">Add new pet</string>
+
+    <!-- App title -->
+    <string name="app_title">Pet Management</string>
+
+    <!-- Username -->
+    <string name="user">User</string>
+
+    <!-- Pet name -->
+    <string name="nombre_mascota">Name</string>
+
+    <!-- Pet age -->
+    <string name="edad_mascota">Age</string>
+
+    <!-- Pet breed -->
+    <string name="raza_mascota">Breed</string>
+
+    <!-- Pet image description -->
+    <string name="descripcion_imagen_mascota">Pet image</string>
+
+    <!-- Text for the EditTexts -->
+    <string name="hint_nombre">Name</string>
+    <string name="hint_raza">Breed</string>
+    <string name="hint_edad">Age</string>
+    <string name="hint_peso">Weight</string>
+    <string name="hint_tipo_mascota">Pet Type</string>
+
+    <!-- Text for options -->
+    <string name="texto_vacunado">Vaccinated:</string>
+    <string name="texto_desparasitado">Dewormed:</string>
+    <string name="texto_esterilizado">Sterilized:</string>
+    <string name="opcion_si">Yes</string>
+    <string name="opcion_no">No</string>
+
+    <!-- Buttons -->
+    <string name="boton_guardar">Save</string>
+    <string name="boton_cancelar">Cancel</string>
+
+    <!-- Detailed pet information -->
+    <string name="edad">Age: </string>
+    <string name="raza">Breed: </string>
+    <string name="peso">Weight: </string>
+    <string name="vacunado">Vaccinated: </string>
+    <string name="desparasitado">Dewormed: </string>
+    <string name="esterilizado">Sterilized: </string>
+    <string name="si">Yes</string>
+    <string name="no">No</string>
+
+    <string name="ordenar_por_nombre">Sort by Name</string>
+    <string name="ordenar_por_raza">Sort by Breed</string>
+    <string name="seleccionar_idioma">Select language</string>
+    <string name="idioma_espanol">Spanish</string>
+    <string name="idioma_ingles">English</string>
+    <string name="idioma_frances">French</string>
+
+    <string name="editar">Edit</string>
+    <string name="eliminar">Delete</string>
+</resources>
