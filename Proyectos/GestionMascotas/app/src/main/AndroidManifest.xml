@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
@@ -7,6 +8,13 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/GestionMascotas">
+        <activity
+            android:name=".Fragmento2"
+            android:label="@string/app_name"
+            android:parentActivityName=".ListadoMascotasUser" />
+        <activity
+            android:name=".Frafmento1"
+            android:exported="false" />
         <activity
             android:name=".AñadirMascota"
             android:exported="false" />
@@ -18,7 +26,7 @@
             android:exported="false" />
         <activity
             android:name=".ListadoMascotasAdmin"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".InfoDetallada"
             android:exported="false" />

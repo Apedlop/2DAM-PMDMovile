@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/titulo"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:padding="7dp">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="75dp"
+                android:src="@drawable/icono_oscuro" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <!-- EditText para el nombre -->
+                <EditText
+                    android:id="@+id/etNombre"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_nombre"
+                    android:inputType="text" />
+
+                <!-- EditText para la raza -->
+                <EditText
+                    android:id="@+id/etRaza"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_raza"
+                    android:inputType="text" />
+
+                <!-- EditText para la edad -->
+                <EditText
+                    android:id="@+id/etEdad"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_edad"
+                    android:inputType="number" />
+
+                <!-- EditText para el peso -->
+                <EditText
+                    android:id="@+id/etPeso"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_peso"
+                    android:inputType="numberDecimal" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <!-- ImageView para mostrar la imagen según el tipo de mascota -->
+                <ImageView
+                    android:id="@+id/imgMascota"
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/descripcion_imagen_mascota"
+                    android:src="@drawable/imagen_perro" />
+
+                <!-- Spinner para Tipo de Mascota -->
+                <Spinner
+                    android:id="@+id/spinnerTipoMascota"
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:hint="@string/hint_tipo_mascota" />
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="vertical">
+
+                    <!-- Fila para Vacunado -->
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <!-- TextView para Vacunado -->
+                        <TextView
+                            android:id="@+id/texto_vacunado"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/texto_vacunado"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <!-- RadioGroup para Vacunado -->
+                        <RadioGroup
+                            android:id="@+id/grupo_vacunado"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/radio_vacunado_si"
+                                android:layout_width="wrap_content"
+                                android:layout_height="20dp"
+                                android:text="@string/opcion_si" />
+
+                            <RadioButton
+                                android:id="@+id/radio_vacunado_no"
+                                android:layout_width="wrap_content"
+                                android:layout_height="20dp"
+                                android:text="@string/opcion_no" />
+                        </RadioGroup>
+                    </TableRow>
+
+                    <!-- Fila para Desparacitado -->
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <!-- TextView para Desparacitado -->
+                        <TextView
+                            android:id="@+id/texto_desparasitado"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/texto_desparasitado"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <!-- RadioGroup para Desparacitado -->
+                        <RadioGroup
+                            android:id="@+id/grupo_desparasitado"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/radio_desparasitado_si"
+                                android:layout_width="wrap_content"
+                                android:layout_height="20dp"
+                                android:text="@string/opcion_si" />
+
+                            <RadioButton
+                                android:id="@+id/radio_desparasitado_no"
+                                android:layout_width="wrap_content"
+                                android:layout_height="20dp"
+                                android:text="@string/opcion_no" />
+                        </RadioGroup>
+                    </TableRow>
+
+                    <!-- Fila para Esterilizado -->
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <!-- TextView para Esterilizado -->
+                        <TextView
+                            android:id="@+id/texto_esterilizado"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/texto_esterilizado"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <!-- RadioGroup para Esterilizado -->
+                        <RadioGroup
+                            android:id="@+id/grupo_esterilizado"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/radio_esterilizado_si"
+                                android:layout_width="wrap_content"
+                                android:layout_height="20dp"
+                                android:text="@string/opcion_si" />
+
+                            <RadioButton
+                                android:id="@+id/radio_esterilizado_no"
+                                android:layout_width="wrap_content"
+                                android:layout_height="20dp"
+                                android:text="@string/opcion_no" />
+                        </RadioGroup>
+                    </TableRow>
+
+                </TableLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnGuardar"
+                    style="@style/botonGuardarEdicion"
+                    android:text="@string/boton_guardar" />
+
+                <Button
+                    android:id="@+id/btnCancelar"
+                    style="@style/botonGuardarEdicion"
+                    android:layout_marginLeft="15dp"
+                    android:text="@string/boton_cancelar" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>
