@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="fondo">#faebda</color>
+    <color name="titulo">#bd793f</color>
+    <color name="toast">#C88C5C</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">Gestión Mascotas</string>
+    <string name="app_title">Gestión de Mascotas</string>
+    <string name="añadir_mascota">Añadir nueva mascota</string>
+    <string name="boton_cancelar">Cancelar</string>
+    <string name="boton_guardar">Guardar</string>
+    <string name="content_description_add_mascota">Añadir nueva mascota</string>
+    <string name="descripcion_imagen_mascota">Imagen de mascota</string>
+    <string name="desparasitado">Desparasitado: </string>
+    <string name="edad">Edad: </string>
+    <string name="edad_mascota">Edad</string>
+    <string name="editar">Editar</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="esterilizado">Esterilizado: </string>
+    <string name="fecha">Fecha</string>
+    <string name="hint_edad">Edad</string>
+    <string name="hint_nombre">Nombre</string>
+    <string name="hint_peso">Peso</string>
+    <string name="hint_raza">Raza</string>
+    <string name="hint_tipo_mascota">Tipo de Mascota</string>
+    <string name="hora">Hora</string>
+    <string name="idioma_espanol">Español</string>
+    <string name="idioma_frances">Francés</string>
+    <string name="idioma_ingles">Inglés</string>
+    <string name="no">No</string>
+    <string name="nombre_mascota">Nombre</string>
+    <string name="opcion_no">No</string>
+    <string name="opcion_si">Sí</string>
+    <string name="ordenar_por_nombre">Ordenar por Nombre</string>
+    <string name="ordenar_por_raza">Ordenar por Raza</string>
+    <string name="peso">Peso: </string>
+    <string name="raza">Raza: </string>
+    <string name="raza_mascota">Raza</string>
+    <string name="seleccionar_idioma">Seleccionar idioma</string>
+    <string name="si">Sí</string>
+    <string name="texto_desparasitado">Desparasitado:</string>
+    <string name="texto_esterilizado">Esterilizado:</string>
+    <string name="texto_vacunado">Vacunado:</string>
+    <string name="user">User</string>
+    <string name="vacunado">Vacunado: </string>
+    <style name="Base.Theme.GestionMascota" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="CustomDatePickerDialog" parent="Theme.MaterialComponents.DayNight.Dialog">
+        
+        <item name="android:textColorPrimary">@color/fondo</item> 
+        <item name="android:textColorSecondary">#76564C</item> 
+
+        
+        <item name="android:colorAccent">@color/fondo</item> 
+
+        
+        <item name="android:colorControlNormal">@color/fondo</item> 
+        <item name="android:colorControlActivated">#76564C</item> 
+        <item name="android:colorButtonNormal">@color/fondo</item> 
+
+        
+        <item name="android:background">#bd793f</item> 
+        <item name="android:divider">#76564C</item> 
+        <item name="android:windowBackground">#bd793f</item> 
+    </style>
+    <style name="CustomTimePicker" parent="Theme.MaterialComponents.DayNight.Dialog">
+        
+        <item name="android:textColorPrimary">#bd793f</item>  
+        <item name="android:textColorSecondary">#bd793f</item>  
+
+        
+        <item name="android:colorAccent">#bd793f</item>  
+
+        
+        <item name="android:colorControlNormal">#bd793f</item>  
+        <item name="android:colorControlActivated">#bd793f</item>  
+        <item name="android:colorButtonNormal">#bd793f</item>  
+
+        
+        <item name="android:divider">#76564C</item>  
+        <item name="android:windowBackground">#bd793f</item>  
+
+        
+        <item name="android:buttonStyle">@style/CustomTimePickerButtons</item>  
+    </style>
+    <style name="CustomTimePickerButtons">
+        <item name="android:background">#C88C5C</item>  
+        <item name="android:textColor">@color/fondo</item>  
+    </style>
+    <style name="GestionMascotas" parent="Theme.AppCompat.Light.NoActionBar">
+        
+        <item name="colorPrimary">#bd793f</item>  
+        <item name="colorPrimaryVariant">@color/fondo</item>  
+        <item name="colorOnPrimary">#bd793f</item>  
+        <item name="android:statusBarColor">#bd793f</item>  
+        <item name="android:windowBackground">#bd793f</item>  
+
+        
+        <item name="android:textColorPrimary">#000000</item> 
+        <item name="android:textColorSecondary">#757575</item> 
+    </style>
+    <style name="GestionMascotas.Dark" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#4B2C20</item>
+        <item name="colorPrimaryVariant">#2A1A14</item>
+        <item name="colorSecondary">#6C3F28</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="android:statusBarColor">#4B2C20</item>
+        <item name="android:windowBackground">#2A1A14</item> 
+
+        
+        <item name="android:textColorPrimary">#000000</item> 
+        <item name="android:textColorSecondary">#757575</item> 
+    </style>
+    <style name="Theme.GestionMascota" parent="Base.Theme.GestionMascota"/>
+    <style name="botonGuardarEdicion">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:textColor">@color/fondo</item>
+        <item name="android:backgroundTint">@color/titulo</item>
+        <item name="android:textSize">18dp</item>
+        <item name="cornerRadius">0dp</item>
+        <item name="android:layout_marginBottom">15dp</item>
+    </style>
+    <style name="botonInicio">
+        <item name="cornerRadius">0dp</item>
+        <item name="android:backgroundTint">@color/fondo</item>
+        <item name="android:textColor">@color/titulo</item>
+    </style>
+    <style name="botonesDateTime">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:backgroundTint">@color/titulo</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">0dp</item>
+    </style>
+    <style name="imagen">
+        <item name="android:layout_width">24dp</item>
+        <item name="android:layout_height">24dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:gravity">center_vertical|start</item>
+    </style>
+    <style name="textoDateTime">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:text"/>
+    </style>
+</resources>

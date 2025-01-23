@@ -22,6 +22,8 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import androidx.fragment.app.FragmentActivity;
@@ -31,7 +33,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Locale;
 
-public class Actividad extends FragmentActivity implements Fragmento1.Callbacks {
+public class Actividad extends AppCompatActivity implements Fragmento1.Callbacks {
 
     private boolean dosFragmentos;
 
@@ -45,8 +47,8 @@ public class Actividad extends FragmentActivity implements Fragmento1.Callbacks 
             dosFragmentos = true;
         }
 
-//        Toolbar toolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
 //        mostarAnimacion();
         botonFlotante();

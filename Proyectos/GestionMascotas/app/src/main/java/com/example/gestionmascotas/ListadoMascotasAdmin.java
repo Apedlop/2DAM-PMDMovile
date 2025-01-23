@@ -42,23 +42,18 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Locale;
 
-public class ListadoMascotasAdmin extends AppCompatActivity implements Fragmento1.Callbacks {
+public class ListadoMascotasAdmin extends AppCompatActivity {
 
     private ListView lista;
     private Mascota mascotaSeleccionada;
     private ArrayList<Mascota> listaMascotas;
     private TextView textoFecha, textoHora;
     private Button botonFecha, botonHora;
-    private boolean dosFragmentos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listado_mascotas);
-
-        if (findViewById(R.id.frame_contenedor) != null) {
-            dosFragmentos = true;
-        }
 
         mostarAnimacion();
         // Boton flotante
@@ -122,7 +117,7 @@ public class ListadoMascotasAdmin extends AppCompatActivity implements Fragmento
 
         // Inicializar la lista de mascotas
         listaMascotas = new ArrayList<>();
-        lista = findViewById(R.id.fragment_listado);
+        lista = findViewById(R.id.lista);
 
         // Cambiar nombre del usuario
         TextView nomUsuario = findViewById(R.id.nomUsuario);
@@ -137,10 +132,10 @@ public class ListadoMascotasAdmin extends AppCompatActivity implements Fragmento
             @Override
             public void onEntrada(Object entrada, View view) {
                 if (entrada != null && view != null) {
-                    TextView nombre = view.findViewById(R.id.textoTitulo);
-                    TextView edad = view.findViewById(R.id.textoEdad);
-                    TextView raza = view.findViewById(R.id.textoRaza);
-                    ImageView imagen = view.findViewById(R.id.imagenLista);
+                    TextView nombre = view.findViewById(R.id.nombre);
+                    TextView edad = view.findViewById(R.id.edad);
+                    TextView raza = view.findViewById(R.id.raza);
+                    ImageView imagen = view.findViewById(R.id.imagen);
 
                     if (nombre != null && edad != null && raza != null && imagen != null) {
                         Mascota mascota = (Mascota) entrada;
@@ -169,21 +164,6 @@ public class ListadoMascotasAdmin extends AppCompatActivity implements Fragmento
 
         // Registrar el menú contextual para el ListView
         registerForContextMenu(lista);
-    }
-
-    @Override
-    public void onEntradaSeleccionada(String id) {
-        if (dosFragmentos) {
-            Bundle arguments = new Bundle();
-            arguments.putString(Fragmento3.ARG_ID_ENTRADA_SELECCIONADA, id);
-            Fragmento3 fragment = new Fragmento3();
-            fragment.setArguments(arguments);
-            getSupportFragmentManager().beginTransaction().replace(R.id.frame_contenedor, fragment).commit();
-        } else {
-            Intent detalleIntent = new Intent(this, Fragmento2.class);
-            detalleIntent.putExtra(Fragmento3.ARG_ID_ENTRADA_SELECCIONADA, id);
-            startActivity(detalleIntent);
-        }
     }
 
     @Override

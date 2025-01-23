@@ -1,0 +1,194 @@
+[
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/drawable_imegen_defecto.jpg.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/drawable/imegen_defecto.jpg"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/drawable_imagen_conejo.jpg.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/drawable/imagen_conejo.jpg"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/layout_layout_detalle.xml.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/layout/layout_detalle.xml"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.gestionmascota.app-debug-31:/layout_toast.xml.flat",
+        "source": "com.example.gestionmascota.app-main-33:/layout/toast.xml"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/xml_data_extraction_rules.xml.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/drawable_marco_imagen.xml.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/drawable/marco_imagen.xml"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/drawable_imagen_gato.jpg.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/drawable/imagen_gato.jpg"
+    },
+    {
+        "merged": "com.example.gestionmascota.app-debug-31:/layout_layout_dospaneles.xml.flat",
+        "source": "com.example.gestionmascota.app-main-33:/layout/layout_dospaneles.xml"
+    },
+    {
+        "merged": "com.example.gestionmascota.app-debug-31:/menu_menu_contextual.xml.flat",
+        "source": "com.example.gestionmascota.app-main-33:/menu/menu_contextual.xml"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/drawable_agregar.png.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/drawable/agregar.png"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/drawable_borde.xml.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/drawable/borde.xml"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/drawable_borde2.xml.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/drawable/borde2.xml"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/anim_aparecer.xml.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/anim/aparecer.xml"
+    },
+    {
+        "merged": "com.example.gestionmascota.app-debug-31:/layout_activity_editar_mascota.xml.flat",
+        "source": "com.example.gestionmascota.app-main-33:/layout/activity_editar_mascota.xml"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/drawable_mod_claro.png.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/drawable/mod_claro.png"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/layout_menu_personalizado.xml.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/layout/menu_personalizado.xml"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/drawable_mod_oscuro.png.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/drawable/mod_oscuro.png"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/xml_backup_rules.xml.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/drawable_tiempo.png.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/drawable/tiempo.png"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/drawable_icono.png.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/drawable/icono.png"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/drawable_crear.xml.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/drawable/crear.xml"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/drawable_peso.png.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/drawable/peso.png"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/drawable_logo.png.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/drawable/logo.png"
+    },
+    {
+        "merged": "com.example.gestionmascota.app-debug-31:/menu_menu.xml.flat",
+        "source": "com.example.gestionmascota.app-main-33:/menu/menu.xml"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/layout_layout_unpanel.xml.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/layout/layout_unpanel.xml"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/drawable_icono_oscuro.png.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/drawable/icono_oscuro.png"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/drawable_bordes_toast.xml.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/drawable/bordes_toast.xml"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/layout_layout_listado.xml.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/layout/layout_listado.xml"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/drawable_imagen_hamster.jpg.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/drawable/imagen_hamster.jpg"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/drawable_ic_launcher_background.xml.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/drawable_imagen_perro.jpg.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/drawable/imagen_perro.jpg"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/drawable_icono_user.png.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/drawable/icono_user.png"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/layout_layout_dospaneles.xml.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/layout/layout_dospaneles.xml"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/drawable_tarjeta.png.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/drawable/tarjeta.png"
+    },
+    {
+        "merged": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-debug-31:/layout_activity_actividad.xml.flat",
+        "source": "/home/usuario/.gradle/daemon/8.7/com.example.gestionmascota.app-main-33:/layout/activity_actividad.xml"
+    }
+]

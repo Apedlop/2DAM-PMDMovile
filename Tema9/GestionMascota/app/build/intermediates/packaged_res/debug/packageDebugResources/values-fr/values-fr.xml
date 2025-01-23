@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Gestion des animaux</string>
+    <string name="app_title">Gestion des animaux</string>
+    <string name="añadir_mascota">Ajouter un nouvel animal</string>
+    <string name="boton_cancelar">Annuler</string>
+    <string name="boton_guardar">Enregistrer</string>
+    <string name="content_description_add_mascota">Ajouter un nouvel animal</string>
+    <string name="descripcion_imagen_mascota">Image de l animal</string>
+    <string name="desparasitado">Dewormed : </string>
+    <string name="edad">Âge : </string>
+    <string name="edad_mascota">Âge</string>
+    <string name="editar">Éditer</string>
+    <string name="eliminar">Supprimer</string>
+    <string name="esterilizado">Stérilisé : </string>
+    <string name="fecha">Date</string>
+    <string name="hint_edad">Âge</string>
+    <string name="hint_nombre">Nom</string>
+    <string name="hint_peso">Poids</string>
+    <string name="hint_raza">Race</string>
+    <string name="hint_tipo_mascota">Type d animal</string>
+    <string name="hora">Heure</string>
+    <string name="idioma_espanol">Espagnol</string>
+    <string name="idioma_frances">Français</string>
+    <string name="idioma_ingles">Anglais</string>
+    <string name="no">Non</string>
+    <string name="nombre_mascota">Nom</string>
+    <string name="opcion_no">Non</string>
+    <string name="opcion_si">Oui</string>
+    <string name="ordenar_por_nombre">Trier par nom</string>
+    <string name="ordenar_por_raza">Trier par race</string>
+    <string name="peso">Poids : </string>
+    <string name="raza">Race : </string>
+    <string name="raza_mascota">Race</string>
+    <string name="seleccionar_idioma">Sélectionner la langue</string>
+    <string name="si">Oui</string>
+    <string name="texto_desparasitado">Dewormed :</string>
+    <string name="texto_esterilizado">Stérilisé :</string>
+    <string name="texto_vacunado">Vacciné :</string>
+    <string name="user">Utilisateur</string>
+    <string name="vacunado">Vacciné : </string>
+</resources>
