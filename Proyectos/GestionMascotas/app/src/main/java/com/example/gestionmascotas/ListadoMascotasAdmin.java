@@ -356,7 +356,7 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
         db = new SQLite(this);
 
         ArrayList<Mascota> mascota = db.getAllMascotas();
-        
+
     }
 
     // Método para mostrar toast
