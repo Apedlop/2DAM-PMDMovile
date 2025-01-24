@@ -49,6 +49,8 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
     private ArrayList<Mascota> listaMascotas;
     private TextView textoFecha, textoHora;
     private Button botonFecha, botonHora;
+    private Adaptador adaptador;
+    private SQLite db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,60 +58,24 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
         setContentView(R.layout.activity_listado_mascotas);
 
         mostarAnimacion();
-        // Boton flotante
-        FloatingActionButton fab = findViewById(R.id.botonFlotante);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ListadoMascotasAdmin.this, AñadirMascota.class);
-                startActivityForResult(intent, 2);
-            }
-        });
+        botonFlotante();
+        dataBase();
 
         textoFecha = findViewById(R.id.textoFecha);
         botonFecha = findViewById(R.id.botonFecha);
+        fecha(textoFecha, botonFecha);
+
         textoHora = findViewById(R.id.textoHora);
         botonHora = findViewById(R.id.botonHora);
-
-        // Calendario
-        final Calendar calendario = Calendar.getInstance();
-        int ano = calendario.get(Calendar.YEAR);
-        int mes = calendario.get(Calendar.MONTH);
-        int dia = calendario.get(Calendar.DAY_OF_MONTH);
-
-        // Crear el DatePickerDialog con el estilo personalizado
-        final DatePickerDialog fecha = new DatePickerDialog(ListadoMascotasAdmin.this, R.style.CustomDatePickerDialog, (view, year, month, dayOfMonth) -> {
-            // Formatear la fecha seleccionada
-            String fechaSeleccionada = dayOfMonth + "/" + (month + 1) + "/" + year;
-            textoFecha.setText(fechaSeleccionada); // Mostrar la fecha en el TextView
-        }, ano, mes, dia); // Fecha por defecto (actual)
-
-        botonFecha.setOnClickListener(v -> {
-            fecha.show();
-        });
-
-        // Hora
-        final Calendar calendar = Calendar.getInstance();
-        int horas = calendar.get(Calendar.HOUR_OF_DAY);
-        int minutos = calendar.get(Calendar.MINUTE);
-
-        // Crear el TimePickerDialog con el estilo personalizado
-        TimePickerDialog hora = new TimePickerDialog(this, R.style.CustomTimePicker, new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                // Formatear la hora y los minutos para que siempre tengan dos dígitos
-                String horaSeleccionada = String.format("%02d:%02d", hourOfDay, minute);
-                textoHora.setText(horaSeleccionada);
-            }
-        }, horas, minutos, false);
-
-        botonHora.setOnClickListener(v -> {
-            hora.show();
-        });
+        hora(textoHora, botonHora);
 
         // Obtener nombre del usuario
         Intent obtenerUsuario = getIntent();
         String usuario = obtenerUsuario.getStringExtra("usuario");
+
+        // Cambiar nombre del usuario
+        TextView nomUsuario = findViewById(R.id.nomUsuario);
+        nomUsuario.setText(usuario);
 
         // Añadir menu personalizado
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -118,10 +84,6 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
         // Inicializar la lista de mascotas
         listaMascotas = new ArrayList<>();
         lista = findViewById(R.id.lista);
-
-        // Cambiar nombre del usuario
-        TextView nomUsuario = findViewById(R.id.nomUsuario);
-        nomUsuario.setText(usuario);
 
         // Agregar algunas mascotas de ejemplo a la lista
         listaMascotas.add(new Mascota("Yoyo", "Bodeguero", R.drawable.imagen_perro, 3, 25.0f, true, true, false));
@@ -148,7 +110,7 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
             }
         });
 
-        // Configurar el evento de clic en los ítems del ListView
+        // Configurar el evento de click en los ítems del ListView
         lista.setOnItemClickListener((parent, view, position, id) -> {
             mascotaSeleccionada = (Mascota) parent.getItemAtPosition(position);
 
@@ -335,6 +297,66 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
         FrameLayout listadoMascotas = findViewById(R.id.listadoMascotas);
         Animation animacion = AnimationUtils.loadAnimation(this, R.anim.aparecer);
         listadoMascotas.startAnimation(animacion);
+    }
+
+    // Método para botón flotante
+    public void botonFlotante() {
+        FloatingActionButton fab = findViewById(R.id.botonFlotante);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ListadoMascotasAdmin.this, AñadirMascota.class);
+                startActivityForResult(intent, 2);
+            }
+        });
+    }
+
+    // Método para la funcionalidad del DatePicker
+    public void fecha(TextView textoFecha, Button botonFecha) {
+        final Calendar calendario = Calendar.getInstance();
+        int ano = calendario.get(Calendar.YEAR);
+        int mes = calendario.get(Calendar.MONTH);
+        int dia = calendario.get(Calendar.DAY_OF_MONTH);
+
+        // Crear el DatePickerDialog con el estilo personalizado
+        final DatePickerDialog fecha = new DatePickerDialog(ListadoMascotasAdmin.this, R.style.CustomDatePickerDialog, (view, year, month, dayOfMonth) -> {
+            // Formatear la fecha seleccionada
+            String fechaSeleccionada = dayOfMonth + "/" + (month + 1) + "/" + year;
+            textoFecha.setText(fechaSeleccionada); // Mostrar la fecha en el TextView
+        }, ano, mes, dia); // Fecha por defecto (actual)
+
+        botonFecha.setOnClickListener(v -> {
+            fecha.show();
+        });
+    }
+
+    // Método funcionalidad TimePicker
+    public void hora(TextView textoHora, Button botonHora) {
+        final Calendar calendar = Calendar.getInstance();
+        int horas = calendar.get(Calendar.HOUR_OF_DAY);
+        int minutos = calendar.get(Calendar.MINUTE);
+
+        // Crear el TimePickerDialog con el estilo personalizado
+        TimePickerDialog hora = new TimePickerDialog(this, R.style.CustomTimePicker, new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                // Formatear la hora y los minutos para que siempre tengan dos dígitos
+                String horaSeleccionada = String.format("%02d:%02d", hourOfDay, minute);
+                textoHora.setText(horaSeleccionada);
+            }
+        }, horas, minutos, false);
+
+        botonHora.setOnClickListener(v -> {
+            hora.show();
+        });
+    }
+
+    public void dataBase() {
+        lista = findViewById(R.id.lista);
+        db = new SQLite(this);
+
+        ArrayList<Mascota> mascota = db.getAllMascotas();
+        
     }
 
     // Método para mostrar toast
