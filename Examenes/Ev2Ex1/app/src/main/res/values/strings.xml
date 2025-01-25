@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">AngelaPedrera_PruebaTema9</string>
+    <string name="recibido">Texto recibido</string>
+    <string name="escribir">Escribe aquí...</string>
+    <string name="enviar">Enviar</string>
+</resources>

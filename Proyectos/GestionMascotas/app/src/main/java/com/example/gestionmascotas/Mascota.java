@@ -15,19 +15,10 @@ public class Mascota implements Serializable {
     private static int idCounter = 0;  // Contador estático para generar IDs únicos
 
     public Mascota(String nombre, String raza, int imagen, int edad, float peso, boolean vacunada, boolean desparacitada, boolean esterilizada) {
+        idCounter++;
         this.nombre = nombre;
         this.raza = raza;
         this.imagen = imagen;
-        this.edad = edad;
-        this.peso = peso;
-        this.vacunada = vacunada;
-        this.desparacitada = desparacitada;
-        this.esterilizada = esterilizada;
-    }
-
-    public Mascota(String nombre, String raza, int edad, float peso, boolean vacunada, boolean desparacitada, boolean esterilizada) {
-        this.nombre = nombre;
-        this.raza = raza;
         this.edad = edad;
         this.peso = peso;
         this.vacunada = vacunada;
