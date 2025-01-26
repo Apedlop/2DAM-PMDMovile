@@ -27,6 +27,7 @@ public class AñadirMascota extends AppCompatActivity {
     private Button btnGuardar, btnCancelar;
     private Spinner spinnerTipoMascota;
     private ImageView imgMascota;
+    private MascotaDBHelper dbMascota;
 
     // Lista de mascotas
     private static ArrayList<Mascota> listaMascotas = new ArrayList<>();
@@ -114,6 +115,8 @@ public class AñadirMascota extends AppCompatActivity {
 
             // Obtener la imagen correspondiente según la selección
             int imagen = obtenerImagenSeleccionada();
+
+//            long id = dbMascota.obtenerProximoIdLibre();
 
             // Crear objeto Mascota
             Mascota nuevaMascota = new Mascota(nombre, raza, imagen, edad, peso, vacunada, desparacitada, esterilizada);

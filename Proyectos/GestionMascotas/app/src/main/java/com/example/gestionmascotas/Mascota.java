@@ -1,9 +1,11 @@
 package com.example.gestionmascotas;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 public class Mascota implements Serializable {
 
+    private long id;
     private String nombre;
     private String raza;
     private int imagen;
@@ -12,10 +14,9 @@ public class Mascota implements Serializable {
     private boolean vacunada;
     private boolean desparacitada;
     private boolean esterilizada;
-    private static int idCounter = 0;  // Contador estático para generar IDs únicos
 
-    public Mascota(String nombre, String raza, int imagen, int edad, float peso, boolean vacunada, boolean desparacitada, boolean esterilizada) {
-        idCounter++;
+    public Mascota( String nombre, String raza, int imagen, int edad, float peso, boolean vacunada, boolean desparacitada, boolean esterilizada) {
+//        this.id = id;
         this.nombre = nombre;
         this.raza = raza;
         this.imagen = imagen;
@@ -27,6 +28,14 @@ public class Mascota implements Serializable {
     }
 
     // Métodos getter y setter para cada propiedad
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getNombre() {
         return nombre;
     }

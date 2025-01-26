@@ -50,7 +50,7 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
     private TextView textoFecha, textoHora;
     private Button botonFecha, botonHora;
     private Adaptador adaptador;
-    private SQLite db;
+    private MascotaDBHelper bdMascota;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +59,6 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
 
         mostarAnimacion();
         botonFlotante();
-        dataBase();
 
         textoFecha = findViewById(R.id.textoFecha);
         botonFecha = findViewById(R.id.botonFecha);
@@ -68,6 +67,9 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
         textoHora = findViewById(R.id.textoHora);
         botonHora = findViewById(R.id.botonHora);
         hora(textoHora, botonHora);
+
+        // Inicializar la base de datos
+        bdMascota = new MascotaDBHelper(this);
 
         // Obtener nombre del usuario
         Intent obtenerUsuario = getIntent();
@@ -85,9 +87,8 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
         listaMascotas = new ArrayList<>();
         lista = findViewById(R.id.lista);
 
-        // Agregar algunas mascotas de ejemplo a la lista
-        listaMascotas.add(new Mascota("Yoyo", "Bodeguero", R.drawable.imagen_perro, 3, 25.0f, true, true, false));
-        listaMascotas.add(new Mascota("Leon", "Labrador", R.drawable.imagen_perro, 5, 30.5f, true, false, true));
+        // Cargar mascotas de la base de datos
+        listaMascotas = bdMascota.obtenerMascotas();
 
         // Configurar el adaptador para el ListView
         lista.setAdapter(new Adaptador(listaMascotas, R.layout.elementos, this) {
@@ -155,8 +156,9 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
                     .setPositiveButton("Eliminar", (dialog, which) -> {
                         // Lógica para eliminar la mascota
                         if (posicion >= 0 && posicion < listaMascotas.size()) {
+                            String nombreMascota = listaMascotas.get(posicion).getNombre();
+                            bdMascota.eliminarMascota(nombreMascota);  // Pasar el ID real a eliminar
                             listaMascotas.remove(posicion);
-
                             // Notificar al adaptador que los datos han cambiado
                             ((Adaptador) lista.getAdapter()).notifyDataSetChanged();
 
@@ -186,13 +188,14 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
             int posicion = data.getIntExtra("position", -1);
 
             if (posicion >= 0 && posicion < listaMascotas.size()) {
+                bdMascota.actualizarMascota(mascotaModificada);
                 listaMascotas.set(posicion, mascotaModificada);  // Reemplaza el objeto en la lista
 
                 // Notifica al adaptador que los datos han cambiado
                 ((Adaptador) lista.getAdapter()).notifyDataSetChanged();
                 mostrarToast("Mascota modificada con éxito");
             }
-        } else  if (requestCode == 2 && resultCode == RESULT_OK && data != null) {
+        } else if (requestCode == 2 && resultCode == RESULT_OK && data != null) {
             ArrayList<Mascota> listaMascotasRecibida = (ArrayList<Mascota>) data.getSerializableExtra("mascotas");
 
             if (listaMascotasRecibida != null && !listaMascotasRecibida.isEmpty()) {
@@ -201,13 +204,13 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
 
                 // Asegúrate de no añadir la misma mascota si ya está en la lista
                 if (!listaMascotas.contains(ultimaMascota)) {
+                    bdMascota.insertarMascota(ultimaMascota);
                     listaMascotas.add(ultimaMascota);  // Añadir solo la última mascota
                     ((Adaptador) lista.getAdapter()).notifyDataSetChanged();
                     mostrarToast("Mascota añadida");
                 }
             }
         }
-
 
     }
 
@@ -349,14 +352,6 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
         botonHora.setOnClickListener(v -> {
             hora.show();
         });
-    }
-
-    public void dataBase() {
-        lista = findViewById(R.id.lista);
-        db = new SQLite(this);
-
-        ArrayList<Mascota> mascota = db.getAllMascotas();
-
     }
 
     // Método para mostrar toast

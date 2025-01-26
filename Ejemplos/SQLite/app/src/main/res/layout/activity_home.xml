@@ -6,18 +6,18 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <EditText
-        android:id="@+id/usernameField"
+    <TextView
+        android:id="@+id/welcomeText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nombre de usuario"
-        android:inputType="text"
-        android:padding="8dp" />
+        android:text="Bienvenido!"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:paddingBottom="16dp" />
 
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/infoButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Iniciar Sesión"
-        android:layout_marginTop="16dp" />
+        android:text="Información de la App" />
 </LinearLayout>

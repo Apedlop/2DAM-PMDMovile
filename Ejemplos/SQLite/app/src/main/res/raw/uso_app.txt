@@ -1,0 +1,3 @@
+Bienvenido a nuestra aplicación.
+Esta aplicación permite gestionar diferentes usuarios con almacenamiento independiente.
+Utilizamos SharedPreferences y SQLite para guardar datos.

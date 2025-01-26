@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
@@ -7,6 +8,9 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/GestionMascotas">
+        <activity
+            android:name=".Informacion"
+            android:exported="false" />
         <activity
             android:name=".AñadirMascota"
             android:exported="false" />

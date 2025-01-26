@@ -1,0 +1,11 @@
+¡Bienvenido/a a nuestra aplicación de gestión de mascotas!
+
+Esta herramienta está diseñada para facilitar el cuidado y la administración de la información de tus mascotas, permitiéndote realizar acciones como:
+
+    - Iniciar sesión con tu perfil de usuario o administrador.
+    - Registrar nuevas mascotas, así como editar o eliminar información existente (para administradores).
+    - Consultar detalles de cada mascota, incluyendo su nombre, raza y más datos relevantes.
+    - Buscar y ordenar mascotas para encontrarlas fácilmente.
+    - Nuestra aplicación está hecha pensando en ti y en el bienestar de tus compañeros peludos.
+
+Si tienes dudas, consulta la sección de ayuda o visita el sitio web oficial. ¡Gracias por confiar en nosotros para cuidar lo que más quieres!

@@ -1,7 +1,9 @@
 package com.example.gestionmascotas;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +15,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.w3c.dom.Text;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.HashMap;
 
@@ -23,6 +25,7 @@ public class InicioSesion extends AppCompatActivity {
     TextView inicioNulo;
     Button btInicio;
     HashMap<String, String> usuarios;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,19 @@ public class InicioSesion extends AppCompatActivity {
         nomUsuario = findViewById(R.id.nomUsuario);
         nomContraseña = findViewById(R.id.contraseña);
         btInicio = findViewById(R.id.botonInicio);
+
+        botonFlotante();
+
+        // Inicializar SharedPreferences
+        sharedPreferences = getSharedPreferences("UsuarioPrefs", Context.MODE_PRIVATE);
+
+        // Recuperar el último usuario y contraseña conectados
+        String ultimoUsuario = sharedPreferences.getString("ultimoUsuario", "");
+        String ultimaContraseña = sharedPreferences.getString("ultimaContraseña", "");
+
+        // Rellenar automáticamente los campos de usuario y contraseña
+        nomUsuario.setText(ultimoUsuario);
+        nomContraseña.setText(ultimaContraseña);
 
         // Añadir mapa de usuarios
         usuarios = new HashMap<>();
@@ -49,6 +65,12 @@ public class InicioSesion extends AppCompatActivity {
 
                 // Validar usuario y contraseña
                 if (usuarios.containsKey(usuario) && usuarios.get(usuario).equals(contraseña)) {
+                    // Guardar el último usuario y contraseña en SharedPreferences
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("ultimoUsuario", usuario);
+                    editor.putString("ultimaContraseña", contraseña);
+                    editor.apply();
+
                     if (usuario.equals("admin")) {
                         // Si es admin, abrir actividad para admin
                         Intent intent = new Intent(InicioSesion.this, ListadoMascotasAdmin.class);
@@ -69,6 +91,18 @@ public class InicioSesion extends AppCompatActivity {
                     inicioNulo = findViewById(R.id.inicioNulo);
                     inicioNulo.setText("Usuario o contraseña incorrectos");
                 }
+            }
+        });
+    }
+
+    // Método para botón flotante
+    public void botonFlotante() {
+        FloatingActionButton fab = findViewById(R.id.botonFlotante);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(InicioSesion.this, Informacion.class);
+                startActivity(intent);
             }
         });
     }
