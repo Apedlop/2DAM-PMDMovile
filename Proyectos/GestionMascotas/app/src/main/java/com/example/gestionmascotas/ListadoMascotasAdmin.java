@@ -188,8 +188,8 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
             int posicion = data.getIntExtra("position", -1);
 
             if (posicion >= 0 && posicion < listaMascotas.size()) {
-                bdMascota.actualizarMascota(mascotaModificada);
                 listaMascotas.set(posicion, mascotaModificada);  // Reemplaza el objeto en la lista
+                bdMascota.actualizarMascota(mascotaModificada);
 
                 // Notifica al adaptador que los datos han cambiado
                 ((Adaptador) lista.getAdapter()).notifyDataSetChanged();
