@@ -6,7 +6,7 @@
     tools:context=".MainActivity">
 
     <!-- Agregar la CustomEyeView -->
-    <com.example.prop_03.CustomEyeView
+    <com.example.prop_03.CustomView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:ignore="MissingClass" />

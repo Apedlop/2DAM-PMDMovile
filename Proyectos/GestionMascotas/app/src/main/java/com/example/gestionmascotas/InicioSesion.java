@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,7 @@ public class InicioSesion extends AppCompatActivity {
     Button btInicio;
     HashMap<String, String> usuarios;
     SharedPreferences sharedPreferences;
+    private MediaPlayer musica;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class InicioSesion extends AppCompatActivity {
         nomContraseña = findViewById(R.id.contraseña);
         btInicio = findViewById(R.id.botonInicio);
 
+        musicaInicio();
         botonFlotante();
 
         // Inicializar SharedPreferences
@@ -93,6 +96,31 @@ public class InicioSesion extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    // Método para la música de inicio
+    public void musicaInicio() {
+        musica = MediaPlayer.create(this, R.raw.audio);
+        musica.start();
+        musica.setLooping(true);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Liberar el MediaPlayer para evitar fugas de memoria
+        if (musica != null) {
+            musica.release();
+            musica = null;
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (musica != null && musica.isPlaying()) {
+            musica.pause(); // Pausa la música cuando la actividad entra en segundo plano
+        }
     }
 
     // Método para botón flotante
