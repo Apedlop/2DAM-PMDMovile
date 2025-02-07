@@ -1,0 +1,10 @@
+#Tue Feb 04 13:30:05 CET 2025
+base.0=/home/usuario/Documentos/2DAM-PMDMovile/Tema10/Prop_06/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
+base.1=/home/usuario/Documentos/2DAM-PMDMovile/Tema10/Prop_06/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
+base.2=/home/usuario/Documentos/2DAM-PMDMovile/Tema10/Prop_06/app/build/intermediates/dex/debug/mergeProjectDexDebug/9/classes.dex
+path.0=classes.dex
+path.1=0/classes.dex
+path.2=9/classes.dex
+renamed.0=classes.dex
+renamed.1=classes2.dex
+renamed.2=classes3.dex
