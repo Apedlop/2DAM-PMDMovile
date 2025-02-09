@@ -2,6 +2,8 @@ package com.example.gestionmascotas;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,7 +70,14 @@ public class InfoDetallada extends AppCompatActivity {
     private void actualizarVistaConDatosMascota(Mascota mascota) {
         nombreTextView.setText(mascota.getNombre());
         razaTextView.setText(mascota.getRaza());
-        imagenImageView.setImageResource(mascota.getImagen());
+
+        if (mascota.getImagenByteArray() != null) {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(mascota.getImagenByteArray(), 0, mascota.getImagenByteArray().length);
+            imagenImageView.setImageBitmap(bitmap);
+        } else {
+            imagenImageView.setImageResource(mascota.getImagen()); // Mostrar imagen de recurso
+        }
+
         edadTextView.setText(mascota.getEdad() + " años");
         pesoTextView.setText(mascota.getPeso() + " kg");
 

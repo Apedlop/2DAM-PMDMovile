@@ -19,7 +19,7 @@ public class MascotaDBHelper extends SQLiteOpenHelper {
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_NOMBRE = "nombre";
     public static final String COLUMN_RAZA = "raza";
-    public static final String COLUMN_IMAGEN = "imagen";
+    public static final String COLUMN_IMAGEN = "imagenByteArray";
     public static final String COLUMN_EDAD = "edad";
     public static final String COLUMN_PESO = "peso";
     public static final String COLUMN_VACUNADA = "vacunada";
@@ -32,7 +32,7 @@ public class MascotaDBHelper extends SQLiteOpenHelper {
                     COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COLUMN_NOMBRE + " TEXT, " +
                     COLUMN_RAZA + " TEXT, " +
-                    COLUMN_IMAGEN + " INTEGER, " +
+                    COLUMN_IMAGEN + " BLOB, " +
                     COLUMN_EDAD + " INTEGER, " +
                     COLUMN_PESO + " FLOAT, " +
                     COLUMN_VACUNADA + " INTEGER, " +
@@ -61,7 +61,7 @@ public class MascotaDBHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(COLUMN_NOMBRE, mascota.getNombre());
         values.put(COLUMN_RAZA, mascota.getRaza());
-        values.put(COLUMN_IMAGEN, mascota.getImagen());
+        values.put(COLUMN_IMAGEN, mascota.getImagenByteArray());
         values.put(COLUMN_EDAD, mascota.getEdad());
         values.put(COLUMN_PESO, mascota.getPeso());
         values.put(COLUMN_VACUNADA, mascota.isVacunada() ? 1 : 0);  // Convertir booleano a 1 o 0
@@ -83,7 +83,7 @@ public class MascotaDBHelper extends SQLiteOpenHelper {
 //                        cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_ID)),
                         cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NOMBRE)),
                         cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_RAZA)),
-                        cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_IMAGEN)),
+                        cursor.getBlob(cursor.getColumnIndexOrThrow(COLUMN_IMAGEN)),
                         cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_EDAD)),
                         cursor.getFloat(cursor.getColumnIndexOrThrow(COLUMN_PESO)),
                         cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_VACUNADA)) == 1,  // Convertir a booleano
@@ -109,7 +109,7 @@ public class MascotaDBHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(COLUMN_NOMBRE, mascota.getNombre());
         values.put(COLUMN_RAZA, mascota.getRaza());
-        values.put(COLUMN_IMAGEN, mascota.getImagen());
+        values.put(COLUMN_IMAGEN, mascota.getImagenByteArray());
         values.put(COLUMN_EDAD, mascota.getEdad());
         values.put(COLUMN_PESO, mascota.getPeso());
         values.put(COLUMN_VACUNADA, mascota.isVacunada() ? 1 : 0);

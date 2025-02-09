@@ -7,6 +7,8 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -105,7 +107,12 @@ public class ListadoMascotasAdmin extends AppCompatActivity {
                         nombre.setText(mascota.getNombre());
                         edad.setText("Edad: " + mascota.getEdad());
                         raza.setText("Raza: " + mascota.getRaza());
-                        imagen.setImageResource(mascota.getImagen());
+                        if (mascota.getImagenByteArray() != null) {
+                            Bitmap bitmap = BitmapFactory.decodeByteArray(mascota.getImagenByteArray(), 0, mascota.getImagenByteArray().length);
+                            imagen.setImageBitmap(bitmap);
+                        } else {
+                            imagen.setImageResource(mascota.getImagen()); // Mostrar imagen de recurso
+                        }
                     }
                 }
             }

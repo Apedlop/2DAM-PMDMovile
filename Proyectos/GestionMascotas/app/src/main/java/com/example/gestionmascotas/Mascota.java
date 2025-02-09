@@ -1,7 +1,6 @@
 package com.example.gestionmascotas;
 
 import java.io.Serializable;
-import java.util.UUID;
 
 public class Mascota implements Serializable {
 
@@ -9,6 +8,7 @@ public class Mascota implements Serializable {
     private String nombre;
     private String raza;
     private int imagen;
+    private byte[] imagenByteArray;
     private int edad;
     private float peso;
     private boolean vacunada;
@@ -16,10 +16,20 @@ public class Mascota implements Serializable {
     private boolean esterilizada;
 
     public Mascota( String nombre, String raza, int imagen, int edad, float peso, boolean vacunada, boolean desparacitada, boolean esterilizada) {
-//        this.id = id;
         this.nombre = nombre;
         this.raza = raza;
         this.imagen = imagen;
+        this.edad = edad;
+        this.peso = peso;
+        this.vacunada = vacunada;
+        this.desparacitada = desparacitada;
+        this.esterilizada = esterilizada;
+    }
+
+    public Mascota( String nombre, String raza, byte[] imagenByteArray, int edad, float peso, boolean vacunada, boolean desparacitada, boolean esterilizada) {
+        this.nombre = nombre;
+        this.raza = raza;
+        this.imagenByteArray = imagenByteArray;
         this.edad = edad;
         this.peso = peso;
         this.vacunada = vacunada;
@@ -58,6 +68,14 @@ public class Mascota implements Serializable {
 
     public void setImagen(int imagen) {
         this.imagen = imagen;
+    }
+
+    public byte[] getImagenByteArray() {
+        return imagenByteArray;
+    }
+
+    public void setImagenByteArray(byte[] imagenByteArray) {
+        this.imagenByteArray = imagenByteArray;
     }
 
     public int getEdad() {

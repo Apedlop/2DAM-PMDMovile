@@ -66,12 +66,22 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <!-- Spinner para Tipo de Mascota -->
-                    <Spinner
-                        android:id="@+id/spinnerTipoMascota"
-                        android:layout_width="170dp"
+<!--                    <Spinner-->
+<!--                        android:id="@+id/spinnerTipoMascota"-->
+<!--                        android:layout_width="170dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:hint="@string/hint_tipo_mascota" />-->
+
+
+                    <ImageButton
+                        android:id="@+id/tomarFoto"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:src="@drawable/camara"
                         android:layout_gravity="center"
-                        android:hint="@string/hint_tipo_mascota" />
+                        android:background="@color/fondo"
+                        android:contentDescription="Tomar foto de tu mascota"/>
 
                     <!-- ImageView para mostrar la imagen según el tipo de mascota -->
                     <ImageView
@@ -80,7 +90,7 @@
                         android:layout_height="80dp"
                         android:layout_gravity="center"
                         android:contentDescription="@string/descripcion_imagen_mascota"
-                        android:src="@drawable/imagen_perro" />
+                        android:src="@drawable/imagen_no" />
                 </LinearLayout>
 
                 <TableLayout

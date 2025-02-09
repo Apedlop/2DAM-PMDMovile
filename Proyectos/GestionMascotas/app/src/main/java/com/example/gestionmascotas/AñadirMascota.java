@@ -2,12 +2,16 @@ package com.example.gestionmascotas;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -18,6 +22,7 @@ import android.widget.AdapterView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class AñadirMascota extends AppCompatActivity {
@@ -25,9 +30,12 @@ public class AñadirMascota extends AppCompatActivity {
     private EditText etNombre, etRaza, etEdad, etPeso;
     private RadioGroup rgVacunada, rgDesparacitada, rgEsterilizada;
     private Button btnGuardar, btnCancelar;
+    private ImageButton tomarFoto;
     private Spinner spinnerTipoMascota;
     private ImageView imgMascota;
-    private MascotaDBHelper dbMascota;
+    private int imagen;
+    byte[] imagenByteArray;
+    private  Mascota nuevaMascota;
 
     // Lista de mascotas
     private static ArrayList<Mascota> listaMascotas = new ArrayList<>();
@@ -47,44 +55,57 @@ public class AñadirMascota extends AppCompatActivity {
         rgEsterilizada = findViewById(R.id.grupo_esterilizado);
         btnGuardar = findViewById(R.id.btnGuardar);
         btnCancelar = findViewById(R.id.btnCancelar);
-        spinnerTipoMascota = findViewById(R.id.spinnerTipoMascota);
+        tomarFoto = findViewById(R.id.tomarFoto);
+//        spinnerTipoMascota = findViewById(R.id.spinnerTipoMascota);
         imgMascota = findViewById(R.id.imgMascota);
 
-        // Configurar el Spinner con tipos de mascotas
-        String[] tiposMascota = {"Perro", "Gato", "Conejo", "Hamster"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, tiposMascota);
-        spinnerTipoMascota.setAdapter(adapter);
-
-        // Configurar el evento para el Spinner
-        spinnerTipoMascota.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, android.view.View selectedItemView, int position, long id) {
-                String tipoSeleccionado = parentView.getItemAtPosition(position).toString();
-                // Cambiar la imagen según el tipo de mascota seleccionado
-                switch (tipoSeleccionado) {
-                    case "Perro":
-                        imgMascota.setImageResource(R.drawable.imagen_perro);
-                        break;
-                    case "Gato":
-                        imgMascota.setImageResource(R.drawable.imagen_gato);
-                        break;
-                    case "Conejo":
-                        imgMascota.setImageResource(R.drawable.imagen_conejo);
-                        break;
-                    case "Hamster":
-                        imgMascota.setImageResource(R.drawable.imagen_hamster);
-                        break;
-                    default:
-                        imgMascota.setImageResource(R.drawable.imegen_defecto);
-                        break;
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-                imgMascota.setImageResource(R.drawable.imegen_defecto);
-            }
+        tomarFoto.setOnClickListener(v -> {
+            abrirCamara();
         });
+
+        // Configurar el Spinner con tipos de mascotas
+//        String[] tiposMascota = {"Perro", "Gato", "Conejo", "Hamster", "Tomar foto"};
+//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, tiposMascota);
+//        spinnerTipoMascota.setAdapter(adapter);
+//
+//        // Configurar el evento para el Spinner
+//        spinnerTipoMascota.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parentView, android.view.View selectedItemView, int position, long id) {
+//                Bitmap bitmapMascota;
+//                String tipoSeleccionado = parentView.getItemAtPosition(position).toString();
+//                // Cambiar la imagen según el tipo de mascota seleccionado
+//                switch (tipoSeleccionado) {
+//                    case "Perro":
+//                        imgMascota.setImageResource(R.drawable.imagen_perro);
+//                        imagen = R.drawable.imagen_perro;
+//                        break;
+//                    case "Gato":
+//                        imgMascota.setImageResource(R.drawable.imagen_gato);
+//                        imagen = R.drawable.imagen_gato;
+//                        break;
+//                    case "Conejo":
+//                        imgMascota.setImageResource(R.drawable.imagen_conejo);
+//                        imagen = R.drawable.imagen_conejo;
+//                        break;
+//                    case "Hamster":
+//                        imgMascota.setImageResource(R.drawable.imagen_hamster);
+//                        imagen = R.drawable.imagen_hamster;
+//                        break;
+//                    case "Tomar foto":
+//                        abrirCamara();
+//                    default:
+//                        imgMascota.setImageResource(R.drawable.imegen_defecto);
+//                        imagen = R.drawable.imegen_defecto;
+//                        break;
+//                }
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parentView) {
+//                imgMascota.setImageResource(R.drawable.imegen_defecto);
+//            }
+//        });
 
         btnGuardar.setOnClickListener(view -> {
             // Obtener datos del formulario
@@ -113,13 +134,14 @@ public class AñadirMascota extends AppCompatActivity {
             boolean desparacitada = rgDesparacitada.getCheckedRadioButtonId() == R.id.radio_desparasitado_si;
             boolean esterilizada = rgEsterilizada.getCheckedRadioButtonId() == R.id.radio_esterilizado_si;
 
-            // Obtener la imagen correspondiente según la selección
-            int imagen = obtenerImagenSeleccionada();
-
-//            long id = dbMascota.obtenerProximoIdLibre();
-
             // Crear objeto Mascota
-            Mascota nuevaMascota = new Mascota(nombre, raza, imagen, edad, peso, vacunada, desparacitada, esterilizada);
+//            Mascota nuevaMascota = new Mascota(nombre, raza, imagen, edad, peso, vacunada, desparacitada, esterilizada);
+
+            if (imagenByteArray != null) {
+                nuevaMascota = new Mascota(nombre, raza, imagenByteArray, edad, peso, vacunada, desparacitada, esterilizada);
+            } else {
+                nuevaMascota = new Mascota(nombre, raza, imagen, edad, peso, vacunada, desparacitada, esterilizada);
+            }
 
             // Agregar la mascota a la lista
             listaMascotas.add(nuevaMascota);
@@ -137,19 +159,28 @@ public class AñadirMascota extends AppCompatActivity {
         });
     }
 
-    // Método para obtener el recurso de la imagen según el tipo seleccionado
-    private int obtenerImagenSeleccionada() {
-        switch (spinnerTipoMascota.getSelectedItem().toString()) {
-            case "Perro":
-                return R.drawable.imagen_perro;
-            case "Gato":
-                return R.drawable.imagen_gato;
-            case "Conejo":
-                return R.drawable.imagen_conejo;
-            case "Hamster":
-                return R.drawable.imagen_hamster;
-            default:
-                return R.drawable.imegen_defecto;
+    private void abrirCamara() {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(intent, 1);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imgBitmap = (Bitmap) extras.get("data");
+
+            // Convertir Bitmap a byte[]
+//            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+//            imgBitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+//            imagenByteArray = byteArrayOutputStream.toByteArray();
+
+            imagenByteArray = Util.bitmapToByteArray(imgBitmap);
+
+            imgMascota.setImageBitmap(imgBitmap);
         }
     }
 
