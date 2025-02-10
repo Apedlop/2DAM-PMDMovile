@@ -1,11 +1,14 @@
 package com.example.prop_07;
 
+import android.graphics.Matrix;
+import android.hardware.Camera;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
 
         // Inicializar MediaRecorder y MediaPlayer
         grabador = new MediaRecorder();
+
         reproductor = new MediaPlayer();
 
         surface.getHolder().addCallback(this);
@@ -61,6 +65,8 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
                     grabador.setOutputFile(ruta);
                     grabador.setPreviewDisplay(surfaceHolder.getSurface()); // Importante para video
 
+                    surface.setRotation(90);
+//                    grabador.setOrientationHint(90);
                     grabador.prepare();
                     grabador.start();
                     grabando = true;
@@ -165,4 +171,12 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
             reproductor = null;
         }
     }
+
+    private void rotarSurfaceView(int grados) {
+        ViewGroup.LayoutParams params = surface.getLayoutParams();
+        surface.setRotation(grados);  // Rotar visualmente
+        surface.setLayoutParams(params);
+    }
+
+
 }
