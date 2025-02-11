@@ -65,8 +65,8 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
                     grabador.setOutputFile(ruta);
                     grabador.setPreviewDisplay(surfaceHolder.getSurface()); // Importante para video
 
-                    surface.setRotation(90);
-//                    grabador.setOrientationHint(90);
+//                    surface.setRotation(90);
+                    grabador.setOrientationHint(90);
                     grabador.prepare();
                     grabador.start();
                     grabando = true;
