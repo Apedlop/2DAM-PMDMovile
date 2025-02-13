@@ -3,22 +3,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
     android:padding="16dp"
-    android:background="#0088CC">
+    android:background="#7ABFE2">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="GRABANDO VIDEO"
-        android:textSize="20sp"
+        android:textSize="30dp"
         android:textStyle="bold"
         android:gravity="center"
         android:textColor="#FFFFFF" />
 
     <SurfaceView
         android:id="@+id/videoView"
+        android:layout_margin="10dp"
         android:layout_width="400dp"
-        android:layout_height="500dp"
+        android:layout_height="350dp"
         android:layout_gravity="center" />
 
     <LinearLayout

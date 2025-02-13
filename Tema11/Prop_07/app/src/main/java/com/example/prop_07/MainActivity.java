@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
             public void onClick(View v) {
                 if (grabador != null) {
                     grabador.release(); // Liberar recursos previos antes de reinicializar
+                    grabador = null;
                 }
 
                 grabador = new MediaRecorder();
@@ -65,7 +66,6 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
                     grabador.setOutputFile(ruta);
                     grabador.setPreviewDisplay(surfaceHolder.getSurface()); // Importante para video
 
-//                    surface.setRotation(90);
                     grabador.setOrientationHint(90);
                     grabador.prepare();
                     grabador.start();
@@ -157,26 +157,18 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        // También liberamos los recursos aquí por seguridad
-        if (grabador != null) {
-            grabador.release();
-            grabador = null;
-        }
-
-        if (reproductor != null) {
-            reproductor.release();
-            reproductor = null;
-        }
-    }
-
-    private void rotarSurfaceView(int grados) {
-        ViewGroup.LayoutParams params = surface.getLayoutParams();
-        surface.setRotation(grados);  // Rotar visualmente
-        surface.setLayoutParams(params);
-    }
-
-
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        // También liberamos los recursos aquí por seguridad
+//        if (grabador != null) {
+//            grabador.release();
+//            grabador = null;
+//        }
+//
+//        if (reproductor != null) {
+//            reproductor.release();
+//            reproductor = null;
+//        }
+//    }
 }

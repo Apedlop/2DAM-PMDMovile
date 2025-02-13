@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Área para detectar los eventos de toque -->
+    <View
+        android:id="@+id/touchArea"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="#E0E0E0" />
+
+    <!-- TextView para mostrar la información sobre los eventos -->
+    <TextView
+        android:id="@+id/touchInfoTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Información del toque aparecerá aquí"
+        android:paddingTop="20dp"
+        android:textSize="16sp" />
+</LinearLayout>
