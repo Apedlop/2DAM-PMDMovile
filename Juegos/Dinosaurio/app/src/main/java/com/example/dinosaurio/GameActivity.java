@@ -1,17 +1,16 @@
-package com.example.juego2d;
+package com.example.dinosaurio;
 
 import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class GameActivity extends AppCompatActivity {
+
+    private GameView gameView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Establecer la vista del juego como la vista principal
-        GameView gameView = new GameView(this, null);
+        gameView = new GameView(this);
         setContentView(gameView);
     }
 }

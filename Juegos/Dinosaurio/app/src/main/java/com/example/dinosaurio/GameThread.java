@@ -1,16 +1,17 @@
-package com.example.juego2d;
+package com.example.dinosaurio;
 
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 
 public class GameThread extends Thread {
+
     private SurfaceHolder surfaceHolder;
     private GameView gameView;
     private boolean running;
 
-    public GameThread(SurfaceHolder holder, GameView view) {
-        this.surfaceHolder = holder;
-        this.gameView = view;
+    public GameThread(SurfaceHolder surfaceHolder, GameView gameView) {
+        this.surfaceHolder = surfaceHolder;
+        this.gameView = gameView;
     }
 
     public void setRunning(boolean running) {
