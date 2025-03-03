@@ -18,7 +18,7 @@ public class Vehicle implements Obstacle {
         int xPosition = screenWidth;  // Comienza desde el borde derecho de la pantalla
         rect = new Rect(xPosition, 850, xPosition + VEHICLE_WIDTH, 900);  // Crea el rectángulo del vehículo
         lastVehicleX = xPosition;  // Guarda la última posición X
-        speed = 15;  // Velocidad de movimiento hacia la izquierda
+        speed = 20;  // Velocidad de movimiento hacia la izquierda
     }
 
     @Override

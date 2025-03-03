@@ -23,7 +23,7 @@ public class TreeBranch implements Obstacle {
         rect = new Rect(xPosition, groundLevel - TREE_BRANCH_HEIGHT, xPosition + TREE_BRANCH_WIDTH, groundLevel);  // Crea el rectángulo de la rama
         lastTreeBranchX = xPosition;  // Guarda la última posición X
         speed = 10;  // Velocidad de movimiento hacia la izquierda
-        jumpVelocity = -20;  // Velocidad inicial del salto (hacia arriba)
+        jumpVelocity = -10;  // Velocidad inicial del salto (hacia arriba)
         isJumping = false;  // Inicialmente, el conejo no está saltando
     }
 
@@ -45,7 +45,7 @@ public class TreeBranch implements Obstacle {
             }
         } else {
             // Iniciar un nuevo salto de manera aleatoria
-            if (Math.random() < 0.02) {  // Probabilidad de saltar (2%)
+            if (Math.random() < 0.005) {  // Probabilidad de saltar (0.5%)
                 isJumping = true;
                 jumpVelocity = -20;  // Reiniciar la velocidad del salto
             }

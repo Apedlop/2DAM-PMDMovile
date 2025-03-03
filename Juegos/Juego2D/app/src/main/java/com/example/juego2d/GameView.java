@@ -17,6 +17,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     private GameThread thread;
     private Dinosaurio dino;
     private ArrayList<Obstacle> obstacles; // Lista de obstáculos
+    private ArrayList<PowerUp> powerUps; // Lista de power-ups
     private Paint paint;
     private int score;
     private boolean isGameOver;
@@ -34,10 +35,11 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         thread = new GameThread(getHolder(), this);
         dino = new Dinosaurio();
         obstacles = new ArrayList<>();
+        powerUps = new ArrayList<>();
         paint = new Paint();
         score = 0;
         isGameOver = false;
-        currentScenario = DESIERTO; // Comienza con el escenario Desierto
+        currentScenario = DESIERTO;
         random = new Random();
     }
 
@@ -72,6 +74,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         return true;
     }
 
+    // En el método update de GameView, asegúrate de generar los power-ups cada 500 puntos
     public void update() {
         if (!isGameOver) {
             dino.update();
@@ -84,12 +87,29 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
                 }
             }
 
+            // Actualizar y verificar colisiones con los power-ups
+            for (PowerUp powerUp : powerUps) {
+                powerUp.update(); // Actualizar la posición del power-up
+                if (powerUp.isActive() && Rect.intersects(dino.getRect(), powerUp.getRect())) {
+                    powerUp.applyEffect(dino); // Aplicar el efecto del power-up al dinosaurio
+                    powerUp.deactivate(); // Desactivar el power-up después de ser recogido
+                }
+            }
+
+            // Eliminar power-ups inactivos
+            powerUps.removeIf(powerUp -> !powerUp.isActive());
+
             // Eliminar obstáculos que salen de la pantalla
             obstacles.removeIf(obstacle -> obstacle.getRect().right < 0);
 
             // Generar nuevos obstáculos específicos para cada escenario
             if (random.nextInt(100) < 2 && canGenerateNewObstacle()) {
                 addNewObstacle();
+            }
+
+            // Generar power-ups cada 500 puntos
+            if (score % 500 == 0) {
+                addNewPowerUp();
             }
 
             score++;
@@ -107,10 +127,13 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     public void draw(Canvas canvas) {
         super.draw(canvas);
         if (canvas != null) {
-            canvas.drawColor(getBackgroundColor()); // Cambiar color de fondo según el escenario
+            canvas.drawColor(getBackgroundColor());
             dino.draw(canvas);
             for (Obstacle obstacle : obstacles) {
                 obstacle.draw(canvas);
+            }
+            for (PowerUp powerUp : powerUps) {
+                powerUp.draw(canvas, paint);
             }
             paint.setColor(Color.BLACK);
             paint.setTextSize(50);
@@ -122,48 +145,38 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         }
     }
 
-    // Método para obtener el color de fondo según el escenario
     private int getBackgroundColor() {
         switch (currentScenario) {
             case BOSQUE:
-                return Color.GREEN; // Color de fondo para el bosque
+                return Color.GREEN;
             case CIUDAD:
-                return Color.GRAY; // Color de fondo para la ciudad
+                return Color.GRAY;
             default:
-                return Color.YELLOW; // Color de fondo para el desierto
+                return Color.YELLOW;
         }
     }
 
-    // Método para verificar si se puede generar un nuevo obstáculo
     private boolean canGenerateNewObstacle() {
         if (obstacles.isEmpty()) {
-            return true; // Si no hay obstáculos, generar uno nuevo
+            return true;
         }
 
-        // Obtener el último obstáculo generado
         Obstacle lastObstacle = obstacles.get(obstacles.size() - 1);
-
-        // Verificar si el último obstáculo ha recorrido al menos la separación mínima
         int distanceTraveled = getWidth() - lastObstacle.getRect().right;
         return distanceTraveled >= (MIN_SEPARATION + getObstacleWidth());
     }
 
-    // Método para cambiar de escenario y regenerar obstáculos
     private void changeScenario(int newScenario) {
         currentScenario = newScenario;
-        obstacles.clear(); // Limpiar los obstáculos anteriores
+        obstacles.clear();
     }
 
-    // Método para agregar un nuevo obstáculo según el escenario
     private void addNewObstacle() {
         int screenWidth = getWidth();
-        int nextObstacleX = screenWidth; // Por defecto, el obstáculo aparece en el borde derecho
+        int nextObstacleX = screenWidth;
 
         if (!obstacles.isEmpty()) {
-            // Obtener la posición del último obstáculo
             Obstacle lastObstacle = obstacles.get(obstacles.size() - 1);
-
-            // Calcular la posición del próximo obstáculo con la separación mínima
             if (lastObstacle instanceof Cactus) {
                 nextObstacleX = Cactus.getNextCactusPosition(screenWidth);
             } else if (lastObstacle instanceof TreeBranch) {
@@ -173,36 +186,58 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
             }
         }
 
-        // Asegurarse de que el obstáculo no se genere fuera de la pantalla
         if (nextObstacleX > screenWidth) {
             nextObstacleX = screenWidth;
         }
 
-        obstacles.add(createObstacle(nextObstacleX)); // Generar un nuevo obstáculo
+        obstacles.add(createObstacle(nextObstacleX));
     }
 
-    // Método para crear obstáculos específicos según el escenario actual
     private Obstacle createObstacle(int positionX) {
-        int groundLevel = getHeight() - 100; // Nivel del suelo (ajusta según sea necesario)
+        int groundLevel = getHeight() - 100;
         switch (currentScenario) {
             case BOSQUE:
-                return new TreeBranch(positionX); // Genera una rama de árbol
+                return new TreeBranch(positionX);
             case CIUDAD:
-                return new Vehicle(positionX); // Genera un coche
+                return new Vehicle(positionX);
             default:
-                return new Cactus(positionX); // Genera un cactus
+                return new Cactus(positionX);
         }
     }
 
-    // Método para obtener el ancho de un obstáculo
     private int getObstacleWidth() {
         switch (currentScenario) {
             case BOSQUE:
-                return 50; // Ancho de una rama de árbol
+                return 50;
             case CIUDAD:
-                return 100; // Ancho de un coche
+                return 100;
             default:
-                return 50; // Ancho de un cactus
+                return 50;
+        }
+    }
+
+    private void addNewPowerUp() {
+        if (powerUps.isEmpty()) { // Solo generar un power-up si no hay otro activo
+            int screenWidth = getWidth();
+            int nextPowerUpX = screenWidth;
+            int randomPowerUpType = random.nextInt(3);
+
+            PowerUp newPowerUp = null;
+            switch (randomPowerUpType) {
+                case 0:
+                    newPowerUp = new SuperJump(nextPowerUpX, getHeight() - 200);
+                    break;
+                case 1:
+                    newPowerUp = new SuperSpeed(nextPowerUpX, getHeight() - 200);
+                    break;
+                case 2:
+                    newPowerUp = new CrazyScenario(nextPowerUpX, getHeight() - 200);
+                    break;
+            }
+
+            if (newPowerUp != null) {
+                powerUps.add(newPowerUp); // Agregar el power-up a la lista
+            }
         }
     }
 }
