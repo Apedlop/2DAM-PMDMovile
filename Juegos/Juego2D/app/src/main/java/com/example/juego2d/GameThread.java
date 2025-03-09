@@ -17,6 +17,10 @@ public class GameThread extends Thread {
         this.running = running;
     }
 
+    public boolean isRunning() {
+        return running;
+    }
+
     @Override
     public void run() {
         while (running) {

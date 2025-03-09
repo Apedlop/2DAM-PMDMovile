@@ -1,12 +1,14 @@
 package com.example.juego2d;
 
+import android.content.Context;
+
 public class SuperSpeed extends PowerUp {
-    public SuperSpeed(int x, int y) {
-        super(x, y);
+    public SuperSpeed(int x, int y, Context context) {
+        super(x, y, context);
     }
 
     @Override
-    public void applyEffect(Dinosaurio dino) {
-        dino.superSpeed(); // Activamos el power-up de Super Speed
+    public void applyEffect(Player dino) {
+        dino.activateSuperSpeed();
     }
 }

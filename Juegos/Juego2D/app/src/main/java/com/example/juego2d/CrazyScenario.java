@@ -1,12 +1,14 @@
 package com.example.juego2d;
 
+import android.content.Context;
+
 public class CrazyScenario extends PowerUp {
-    public CrazyScenario(int x, int y) {
-        super(x, y);
+    public CrazyScenario(int x, int y, Context context) {
+        super(x, y, context);
     }
 
     @Override
-    public void applyEffect(Dinosaurio dino) {
-        dino.crazyScenario(); // Activamos el power-up de Crazy Scenario
+    public void applyEffect(Player dino) {
+        dino.activateCrazyScenario();  // Activa el efecto de temblor en el dinosaurio
     }
 }
